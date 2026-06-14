@@ -1,0 +1,278 @@
+body,
+html {
+  overflow-x: hidden;
+}
+
+/* ============================= */
+/* Hero Section                  */
+/* ============================= */
+
+/* Mobile First */
+@media only screen and (min-width: 0rem) {
+  #hero-1785 {
+    width: 100vw;
+    background-color: #f4f4f4;
+    padding: clamp(7rem, 15vw, 12em) 0.5rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  #hero-1785 .cs-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  #hero-1785 .cs-content {
+    max-width: 46.875rem;
+    width: 100%;
+  }
+
+  #hero-1785 .cs-title {
+    font-size: clamp(3.0625rem, 6vw, 5.25rem);
+    color: var(--bs-dark);
+  }
+
+  #hero-1785 .cs-text {
+    color: #4a5568;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  #hero-1785 .cs-illustration {
+    max-width: 43rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #hero-1785 .cs-illustration img {
+    width: 65%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  }
+}
+
+/* Desktop - 768px and up */
+@media only screen and (min-width: 48rem) {
+  #hero-1785 .cs-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 7vw;
+  }
+
+  #hero-1785 .cs-content,
+  #hero-1785 .cs-illustration {
+    flex: 1;
+  }
+
+  #hero-1785 .cs-illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Large Screens */
+@media only screen and (min-width: 120rem) {
+  #hero-1785 {
+    padding-bottom: 14vw;
+  }
+}
+
+/* ============================= */
+/* Project Grid & Responsiveness */
+/* ============================= */
+
+.projects-section {
+  background-color: #ffffff;
+}
+
+/* Replaces all the broken hardcoded image heights */
+.responsive-media {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover; 
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-img:hover .responsive-media {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.project-text {
+  padding: 1rem;
+}
+
+.project-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--bs-dark);
+}
+
+.project-desc {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.btn-outline-primary {
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #212529;
+  border-color: #212529;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ============================= */
+/* UI/UX Modernization Additions */
+/* ============================= */
+
+/* Clean, Minimal Navbar */
+#mainNav {
+    background-color: #ffffff !important;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px !important;
+}
+#mainNav .navbar-brand img {
+    filter: brightness(0); /* Ensures signature is black on white bg */
+}
+#mainNav .navbar-nav li.nav-item a.nav-link {
+    color: #4a5568 !important;
+    font-weight: 600;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+    color: #1abc9c !important;
+}
+#mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+    color: #ffffff !important;
+    background: #212529 !important;
+}
+
+/* Refined Modal Images */
+.img-fluidmodal {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; /* Smoother, more modern shadow */
+}
+
+/* Figma Embed Styling */
+.figma-embed {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 80vh;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .figma-embed {
+    height: 60vh;
+  }
+}
+
+/* ============================= */
+/* Social & Animated Icons       */
+/* ============================= */
+
+#apng-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.apng {
+  max-width: 120px;
+  max-height: 120px;
+  display: none;
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .apng {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .apng {
+    max-width: 160px;
+    max-height: 160px;
+  }
+}
+
+.apng.active {
+  display: block;
+}
+
+/* Contact social icons */
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2%;
+  padding: 0 0 6rem;
+}
+
+.click {
+  width: auto;
+  margin-top: 5%;
+  padding: 15px;
+  background: linear-gradient(145deg, #fdfeff, #d4d5df);
+  box-shadow: 8px 8px 14px #adadb3, -10px -10px 14px #ffffff;
+  border: none;
+  border-radius: 120px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: rgb(35, 35, 35);
+}
+
+.click:hover {
+  transform: scale(1.1) translateY(-5px);
+}
+
+#insta:hover {
+  color: rgb(0, 109, 177);
+  text-shadow: 0 0 9px rgb(9, 91, 163);
+}
+
+#twtr:hover {
+  color: deepskyblue;
+  text-shadow: 0 0 9px deepskyblue;
+}
+
+#github:hover {
+  color: rgb(255, 70, 3);
+  text-shadow: 0 0 9px rgb(255, 70, 3);
+}
+
+#web:hover {
+  color: #0055ff;
+  text-shadow: 0 0 9px blue;
+}
