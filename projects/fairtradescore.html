@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="FairTradeScore: a UX/UI case study by Kiran George for a trade trust score that helps small retailers in India prove they pay on time." />
+    <meta name="author" content="Kiran George" />
+    <title>FairTradeScore – Kiran George</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="../css/bootstrapstyles.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/case-study.css" rel="stylesheet" />
+    <link href="../css/fairtradescore.css?v=3" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="../css/case-space.css?v=3" rel="stylesheet" />
+</head>
+
+<body id="page-top" class="case-study cs-fts cs-space">
+    <!-- starfield, shooting stars and comets, as on the home page (js/space-bg.js) -->
+    <canvas id="sp-canvas" aria-hidden="true"></canvas>
+    <nav class="navbar navbar-expand-lg bg-white text-uppercase fixed-top shadow-sm" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img style="width: 6rem;" src="../assets/img/mysign.png" alt="Kiran George, back to home"></a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-light text-dark rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#portfolio">Portfolio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="ae-hero">
+        <div class="container ae-hero__inner">
+            <div class="ae-hero__text">
+                <p class="ae-eyebrow">UX/UI case study &middot; 2026</p>
+                <h1 class="ae-hero__title">FairTradeScore</h1>
+                <p class="ae-hero__lede">A trade trust score that helps small retailers in India prove they pay on time, and helps their suppliers decide who to give credit to.</p>
+                <div class="ae-hero__actions">
+                    <a class="btn ae-btn-light" href="#prototype">Watch the prototype</a>
+                    <a class="ae-link-light" href="#problem">Why it matters <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="ft-hero-visual" aria-hidden="true">
+                <div class="ft-desk">
+                    <div class="dc-frame" data-w="1440" data-h="954">
+                        <iframe src="fairtradescore/screens/x2-overview.html" title="" tabindex="-1" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="ft-phone ft-phone--hero">
+                    <div class="dc-frame" data-w="390" data-h="844">
+                        <iframe src="fairtradescore/screens/b1-home.html?showStage=false" title="" tabindex="-1"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <dl class="ae-meta">
+                <div><dt>Role</dt><dd>UX research, UX and UI design</dd></div>
+                <div><dt>Platforms</dt><dd>Retailer app, supplier dashboard, website</dd></div>
+                <div><dt>Scope</dt><dd>69 hi-fi screens: 50 app, 13 dashboard, 6 web</dd></div>
+                <div><dt>Status</dt><dd>Hi-fi complete &middot; usability testing next</dd></div>
+            </dl>
+        </div>
+    </header>
+
+    <main>
+        <!-- Problem -->
+        <section class="ae-section" id="problem">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">The problem</p>
+                    <h2 class="ae-h2">Trade credit runs on guesswork</h2>
+                    <p>Across India, small shops buy stock on credit from distributors and pay later. Nobody has a reliable way to check whether a retailer is creditworthy first. There is no standard score for trade, so decisions rest on a sales rep's word, late payments pile up, and new partners are hard to judge.</p>
+                </div>
+
+                <div class="ft-sides">
+                    <article class="ft-side ft-side--retailer">
+                        <span class="ae-label">Retailer &middot; gets scored</span>
+                        <p class="ft-side__quote">&ldquo;How do I show I'm financially responsible?&rdquo;</p>
+                        <p>A shop owner with years of good payments but no paperwork to prove it. New suppliers won't give credit to a shop they can't check.</p>
+                    </article>
+                    <article class="ft-side ft-side--supplier">
+                        <span class="ae-label">Supplier &middot; checks the score</span>
+                        <p class="ft-side__quote">&ldquo;Can I trust this retailer?&rdquo;</p>
+                        <p>A distributor's credit lead who needs a fast answer on each retailer's risk that they can defend, instead of relying on gut feel.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prototype walkthrough: auto-plays real screens (js/ft-prototype.js) -->
+        <section class="ae-section ae-section--dark" id="prototype">
+            <div class="container">
+                <div class="ft-proto" data-proto>
+                    <div class="ft-proto__intro">
+                        <p class="ae-kicker ae-kicker--light">Prototype walkthrough</p>
+                        <h2 class="ae-h2">The retailer app, start to finish</h2>
+                        <p>Watch a 90-second tour of the hi-fi prototype, or switch to <strong>Try it yourself</strong> and tap through all 48 screens of the retailer app: signing up, earning a score, sharing it, confirming credits and staying in control. These are the real screens, with every interaction designed for them.</p>
+                    </div>
+
+                    <div class="ft-proto__device">
+                        <div class="ft-phone">
+                            <div class="ft-proto__screen" role="img" aria-label="Walkthrough of the FairTradeScore retailer app, described in the caption beside it">
+                                <span class="ft-proto__hots" aria-hidden="true"></span>
+                                <span class="ft-proto__finger" aria-hidden="true"></span>
+                                <span class="ft-proto__badge" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ft-proto__panel">
+                        <div class="ft-proto__modes" role="group" aria-label="Prototype mode">
+                            <button type="button" data-proto-mode="tour" aria-pressed="true">Watch the tour</button>
+                            <button type="button" data-proto-mode="live" aria-pressed="false">Try it yourself</button>
+                        </div>
+                        <ol class="ft-proto__chapters" data-proto-chapters aria-label="Jump to a part of the app"></ol>
+                        <p class="ft-proto__caption" data-proto-caption>A supplier invites the shop. The welcome screen sums up the payoff in three lines.</p>
+                        <p class="ft-proto__hint" data-proto-hint></p>
+                        <div class="ft-proto__controls ft-proto__live-controls">
+                            <button type="button" class="ft-proto__btn ft-proto__btn--text" data-proto-back disabled>
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Back
+                            </button>
+                            <button type="button" class="ft-proto__btn ft-proto__btn--text" data-proto-restart>
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Start over
+                            </button>
+                        </div>
+                        <div class="ft-proto__controls ft-proto__tour-controls">
+                            <button type="button" class="ft-proto__btn" data-proto-prev aria-label="Previous screen">
+                                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <button type="button" class="ft-proto__btn ft-proto__btn--play" data-proto-play aria-pressed="true" aria-label="Pause walkthrough">
+                                <svg class="ft-proto__icon-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                                <svg class="ft-proto__icon-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg>
+                            </button>
+                            <button type="button" class="ft-proto__btn" data-proto-next aria-label="Next screen">
+                                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <span class="ft-proto__counter" data-proto-counter>Screen 1 of 19</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process + principles -->
+        <section class="ae-section ae-section--soft" id="process">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Process</p>
+                    <h2 class="ae-h2">A double diamond for a two-sided product</h2>
+                    <p>Two kinds of user with opposite needs meant mapping both journeys and designing three products that work together: a mobile app for retailers, a web dashboard for suppliers, and a website that explains it all.</p>
+                </div>
+                <ol class="ft-steps">
+                    <li><span>01</span><strong>Discover</strong>Brief, pitch deck review, stakeholder Q&amp;A, fintech UI study</li>
+                    <li><span>02</span><strong>Define</strong>Proto-personas, two journey maps, problem framing, success metrics</li>
+                    <li><span>03</span><strong>Structure</strong>App and web sitemaps, five user flows, lo-fi wireframes</li>
+                    <li><span>04</span><strong>Visual system</strong>Four brand directions, one chosen, a full design system</li>
+                    <li><span>05</span><strong>Hi-fi design</strong>50 app screens, 13 dashboard screens, 6 website pages</li>
+                    <li class="is-next"><span>06 &middot; Next</span><strong>Prototype &amp; test</strong>Usability tests with 5 retailers and 5 suppliers</li>
+                </ol>
+
+                <h3 class="ft-h3">Four principles guided every screen</h3>
+                <div class="ft-principles">
+                    <div><strong>Trust through transparency</strong><p>Always show what we see, why the score is what it is, and who has looked.</p></div>
+                    <div><strong>Guidance, not punishment</strong><p>Every low factor comes with a next step. Never a dead end.</p></div>
+                    <div><strong>Readable at a glance</strong><p>Numbers, bands and icons first. Short words. Thumb-reachable actions on a budget phone.</p></div>
+                    <div><strong>Serious, not cold</strong><p>The calm, precise tone of a bank, with the plain language of a shopkeeper.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score stages: interactive -->
+        <section class="ae-section ae-section--dark" id="stages">
+            <div class="container">
+                <div class="ft-stages">
+                    <div class="ft-stages__text">
+                        <p class="ae-kicker ae-kicker--light">The key idea</p>
+                        <h2 class="ae-h2">A score you earn, not one you're handed</h2>
+                        <p>Bank data shows cash flow, not whether a shop pays its suppliers. So a new retailer doesn't get a number on day one. The score grows up in three stages, and the app is honest about how sure it is at each one.</p>
+                        <div class="ft-switch" role="tablist" aria-label="Score stage">
+                            <button type="button" role="tab" aria-selected="false" aria-controls="ft-stage-panel" data-stage="building">1 &middot; Building</button>
+                            <button type="button" role="tab" aria-selected="false" aria-controls="ft-stage-panel" data-stage="early">2 &middot; Early</button>
+                            <button type="button" role="tab" aria-selected="true" aria-controls="ft-stage-panel" data-stage="established">3 &middot; Established</button>
+                        </div>
+                        <div class="ft-stage-info" id="ft-stage-panel" role="tabpanel" aria-live="polite">
+                            <div data-info="building" hidden>
+                                <h3>Facts, not a score</h3>
+                                <p>The retailer sees progress toward a first score, and suppliers see verified facts from their bank data. The first score needs <strong>3 verified credits from at least 2 suppliers over 60+ days</strong>.</p>
+                            </div>
+                            <div data-info="early" hidden>
+                                <h3>A range, clearly labelled</h3>
+                                <p>The first score is a <strong>range, like 62&ndash;74</strong>, marked &ldquo;Early&rdquo; so suppliers know it is still settling. It narrows to one number as more credits are verified.</p>
+                            </div>
+                            <div data-info="established">
+                                <h3>One number, with its confidence</h3>
+                                <p>After <strong>10 closed credits or 6 months of history</strong>, the retailer gets a single score out of 100, a band, a confidence level and a breakdown of five factors, each with a next step.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-stages__phone">
+                        <div class="ft-phone">
+                            <div class="dc-frame" data-w="390" data-h="844" data-stage-frame="building" hidden>
+                                <iframe src="fairtradescore/screens/b0-building.html?showStage=false" title="Retailer home while the score is building: 2 of 3 verified credits"></iframe>
+                            </div>
+                            <div class="dc-frame" data-w="390" data-h="844" data-stage-frame="early" hidden>
+                                <iframe src="fairtradescore/screens/b0b-early.html?showStage=false" title="Retailer home with an early score range of 62 to 74"></iframe>
+                            </div>
+                            <div class="dc-frame" data-w="390" data-h="844" data-stage-frame="established">
+                                <iframe src="fairtradescore/screens/b1-home.html?showStage=false" title="Retailer home with an established score of 72, Good"></iframe>
+                            </div>
+                        </div>
+                        <p class="ft-caption">Real screens from the hi-fi design, built in HTML.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What changed and why -->
+        <section class="ae-section" id="changes">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">What changed and why</p>
+                    <h2 class="ae-h2">Three decisions I reversed during design</h2>
+                    <p>Working through the flows in detail showed gaps in the first plan. I kept the early boards as they were, so the reasoning stays visible.</p>
+                </div>
+                <ol class="ft-changes">
+                    <li>
+                        <h3>No score on day one</h3>
+                        <div class="ft-before"><span class="ae-label">Before</span>A score in about a minute, straight from bank data.</div>
+                        <div class="ft-after"><span class="ae-label">After</span>Building, then an early range, then an established number.</div>
+                        <p><strong>Why:</strong> a day-one number would claim a certainty the data can't support.</p>
+                    </li>
+                    <li>
+                        <h3>Credits confirmed by both sides</h3>
+                        <div class="ft-before"><span class="ae-label">Before</span>Suppliers upload a monthly payment ledger.</div>
+                        <div class="ft-after"><span class="ae-label">After</span>The supplier records each credit, the retailer confirms it within 48 hours, and the supplier confirms payment within 7 days.</div>
+                        <p><strong>Why:</strong> a one-sided ledger can be wrong or gamed. Two confirmations make every data point trustworthy and give retailers a say.</p>
+                    </li>
+                    <li>
+                        <h3>Past credits count</h3>
+                        <div class="ft-before"><span class="ae-label">Before</span>History starts on the day the retailer signs up.</div>
+                        <div class="ft-after"><span class="ae-label">After</span>Retailers add credits from before they joined, and the supplier verifies each one from a WhatsApp link.</div>
+                        <p><strong>Why:</strong> shops with years of good history reach a first score in weeks instead of months.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Trust & consent -->
+        <section class="ae-section ae-section--soft" id="trust">
+            <div class="container">
+                <div class="ft-split">
+                    <div>
+                        <p class="ae-kicker">Trust &amp; consent</p>
+                        <h2 class="ae-h2">The retailer decides who sees what</h2>
+                        <p>Many shop owners distrust apps with their bank data, so consent is spelled out in plain words before anything is shared.</p>
+                        <ul class="ae-list">
+                            <li><strong>No surprises:</strong> before linking a bank through India's Account Aggregator system, the app shows exactly what will be requested, and what it will never do.</li>
+                            <li><strong>Supplier asks, retailer approves:</strong> each request lists what the supplier will and will never see.</li>
+                            <li><strong>Time-bound and revocable:</strong> access lasts 30 or 90 days, can be stopped any time, and every view is logged, in line with India's DPDP Act.</li>
+                        </ul>
+                        <p class="ft-hint"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> The approval screen works: try switching between 30 and 90 days.</p>
+                    </div>
+                    <div class="ft-phones">
+                        <figure class="ft-fig">
+                            <div class="ft-phone">
+                                <div class="dc-frame" data-w="390" data-h="844">
+                                    <iframe src="fairtradescore/screens/a5-consent.html" title="Account Aggregator consent screen listing what will be requested" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <figcaption>Linking a bank</figcaption>
+                        </figure>
+                        <figure class="ft-fig">
+                            <div class="ft-phone">
+                                <div class="dc-frame" data-w="390" data-h="844">
+                                    <iframe src="fairtradescore/screens/c2-approve.html?stage=established" title="Interactive: approve a supplier's request to see the score, for 30 or 90 days" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <figcaption>Approving a request</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supplier dashboard -->
+        <section class="ae-section" id="dashboard">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Supplier dashboard</p>
+                    <h2 class="ae-h2">From a score to a credit decision you can defend</h2>
+                    <p>Suppliers work at a desk, so their side is a light-themed web dashboard. The overview shows who needs attention, and each retailer's report turns the score into a suggested credit limit.</p>
+                </div>
+                <figure class="ft-fig ft-fig--wide">
+                    <div class="ft-browser">
+                        <div class="dc-frame" data-w="1440" data-h="954">
+                            <iframe src="fairtradescore/screens/x2-overview.html" title="Supplier dashboard overview" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <figcaption><strong>Overview.</strong> Retailers to review, credits waiting for confirmation, and alerts in one place.</figcaption>
+                </figure>
+                <figure class="ft-fig ft-fig--wide">
+                    <div class="ft-browser">
+                        <div class="dc-frame" data-w="1440" data-h="820">
+                            <iframe src="fairtradescore/screens/x4-report.html" title="Interactive: a retailer's score report with a suggested credit limit" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <figcaption><strong>Score report.</strong> Score, confidence, factors and recent credits, with a suggested limit the supplier can accept or change. Try &ldquo;Accept suggestion&rdquo;.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- More screens -->
+        <section class="ae-section ae-section--dark" id="screens">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker ae-kicker--light">More of the app</p>
+                    <h2 class="ae-h2">Guidance, and verification without an app</h2>
+                </div>
+                <div class="ft-phones ft-phones--three">
+                    <figure class="ft-fig">
+                        <div class="ft-phone">
+                            <div class="dc-frame" data-w="390" data-h="844">
+                                <iframe src="fairtradescore/screens/b2-factor.html" title="Interactive: payment behaviour factor with recent payments and how it is calculated" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                        <figcaption><strong>Factor detail.</strong> What each factor measures and how it's calculated. Tap &ldquo;How it's calculated&rdquo;.</figcaption>
+                    </figure>
+                    <figure class="ft-fig">
+                        <div class="ft-phone">
+                            <div class="dc-frame" data-w="390" data-h="844">
+                                <iframe src="fairtradescore/screens/c2-approve.html?stage=building" title="Approval request while the score is still building" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                        <figcaption><strong>Sharing before a score.</strong> Suppliers see verified facts and progress, never a made-up number.</figcaption>
+                    </figure>
+                    <figure class="ft-fig">
+                        <div class="ft-phone">
+                            <div class="dc-frame" data-w="390" data-h="844">
+                                <iframe src="fairtradescore/screens/p3-verify.html" title="Interactive: a supplier verifies a past credit from a WhatsApp link" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                        <figcaption><strong>Verify from WhatsApp.</strong> A supplier confirms a past credit in a light web page, no app needed. Try the buttons.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual identity -->
+        <section class="ae-section" id="identity">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Visual identity</p>
+                    <h2 class="ae-h2">Four directions, one chosen: Midnight</h2>
+                    <p>I explored four brand directions. A study of how leading fintech apps make money feel calm and premium led to <strong>Midnight</strong>: a dark interface with a single violet accent, Plus Jakarta Sans, and a light theme for the supplier dashboard. The score got its own set of components, from the gauge to the stage indicators.</p>
+                </div>
+                <figure class="ft-fig ft-fig--wide">
+                    <div class="ft-board">
+                        <div class="dc-frame" data-w="1600" data-h="1312">
+                            <iframe src="fairtradescore/screens/brand-midnight.html" title="Brand board for the chosen Midnight direction" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <figcaption><strong>Direction D &middot; Midnight.</strong> The chosen direction: colour, type and how it looks in the product.</figcaption>
+                </figure>
+                <figure class="ft-fig ft-fig--wide">
+                    <div class="ft-board">
+                        <div class="dc-frame" data-w="1600" data-h="1100">
+                            <iframe src="fairtradescore/screens/ds-score.html" title="Design system: score components" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <figcaption><strong>Score components.</strong> Part of the design system: the building blocks used across the app and dashboard.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Next -->
+        <section class="ae-section ae-section--soft" id="next">
+            <div class="container ae-narrow">
+                <p class="ae-kicker">What's next</p>
+                <h2 class="ae-h2">Testing it with the people it's for</h2>
+                <p>The hi-fi design is complete. Next is a usability test with <strong>5 retailers and 5 suppliers</strong>, then another round of design. Targets will be set from that baseline. The test will measure:</p>
+                <ul class="ae-list">
+                    <li><strong>For retailers:</strong> how many get from invite to first score, how long it takes, and where they drop off at the bank consent step.</li>
+                    <li><strong>For suppliers:</strong> time from request to credit decision, and success at setting a credit limit.</li>
+                    <li><strong>For the business:</strong> fewer overdue payments among scored retailers, and suppliers still using it after 90 days.</li>
+                </ul>
+            </div>
+        </section>
+
+        <nav class="ae-back container" aria-label="Project navigation">
+            <a class="btn btn-outline-primary" href="../index.html#portfolio"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects</a>
+        </nav>
+    </main>
+
+    <div class="copyright py-4 text-center text-white" style="background-color: #1a252f;">
+        <div class="container"><small>Copyright &copy; Kiran George</small></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/case-study.js"></script>
+    <script src="../js/dc-frame.js?v=3"></script>
+    <script src="../js/fairtradescore.js?v=3"></script>
+    <script src="../js/ft-prototype.js?v=3"></script>
+    <script src="../js/space-bg.js?v=3"></script>
+</body>
+</html>

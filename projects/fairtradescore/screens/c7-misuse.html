@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Report misuse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 22px 18px 24px; background: #0B0D10; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="c1-trust.html" aria-label="Back to Trust" style="width: 44px; height: 44px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="flex: 1; font-size: 17px; font-weight: 800">Report misuse</span>
+</div>
+
+<sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; line-height: 1.5; font-weight: 500; color: #A1A9B5">Tell us what happened. Reports go to our trust team, not to any supplier.</p>
+<div role="radiogroup" aria-label="What happened" style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: #171A1F">
+<sc-for list="{{options}}" as="o" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{o.checked}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 12px; min-height: 56px; border: none; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; text-align: left"><span style="width: 20px; height: 20px; border-radius: 999px; border: {{o.ring}}; box-sizing: border-box; flex: none"></span>{{o.label}}</button>
+</sc-for>
+</div>
+<label for="hf-misuse-note" style="font-size: 13px; font-weight: 700; color: #A1A9B5">Anything else? (optional)</label>
+<textarea id="hf-misuse-note" rows="3" placeholder="For example: someone called saying they were from my distributor" style="box-sizing: border-box; padding: 14px 16px; border-radius: 16px; background: #171A1F; border: 1px solid #2A2F37; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; line-height: 1.5; resize: none"></textarea>
+</div>
+<button type="button" onClick="{{send}}" style="margin-top: auto; min-height: 56px; border: none; border-radius: 999px; background: #A78BFA; box-shadow: 0 8px 28px rgba(167,139,250,0.35); color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Send report</button>
+</sc-if>
+
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 0 10px">
+<span style="width: 72px; height: 72px; border-radius: 999px; background: rgba(45,212,191,0.16); display: flex; align-items: center; justify-content: center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+<span style="font-size: 24px; font-weight: 800">Report received</span>
+<span style="font-size: 14px; line-height: 1.55; color: #A1A9B5">Our trust team will call you within 24 hours. Reference FTS-2611-0482. If you feel unsafe sharing right now, pause it.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<a href="c4-pause.html" style="display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 999px; background: #22262D; border: 1px solid rgba(255,255,255,0.08); color: #F3F5F8; font-size: 15px; font-weight: 700; text-decoration: none">Pause all sharing now</a>
+<a href="c1-trust.html" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: #A78BFA; color: #0B0D10; font-size: 16px; font-weight: 800; text-decoration: none">Back to Trust</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const pick = s.pick || 'stranger';
+const opts = [['stranger', 'Someone I don’t know asked for access'], ['sharing', 'A supplier shared my score with others'], ['pressure', 'I was pressured to approve'], ['other', 'Something else']];
+return {
+editing: !s.done, done: !!s.done,
+options: opts.map(o => ({ label: o[1], checked: o[0] === pick ? 'true' : 'false', ring: o[0] === pick ? '6px solid #A78BFA' : '2px solid #3A3F48', pick: () => this.setState({ pick: o[0] }) })),
+send: () => this.setState({ done: true })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

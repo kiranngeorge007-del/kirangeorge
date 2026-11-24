@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 22px 18px 24px; background: #0B0D10; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="c1-trust.html" aria-label="Back to Trust" style="width: 44px; height: 44px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="flex: 1; font-size: 17px; font-weight: 800">My data</span>
+</div>
+
+<p style="margin: 0; font-size: 14px; line-height: 1.5; font-weight: 500; color: #A1A9B5">Everything we hold about you, and how to take it with you or delete it.</p>
+
+<section style="display: flex; flex-direction: column; padding: 4px 18px; border-radius: 24px; background: #171A1F; border: 1px solid rgba(255,255,255,0.06)">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; border-bottom: 1px solid #22262D"><span style="font-size: 14px; font-weight: 700">Business details</span><span style="font-size: 12px; color: #A1A9B5">GSTIN 27ABCDE••••1Z5 · PAN ABCDE••••F · address</span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #22262D"><span style="display: flex; flex-direction: column; gap: 2px; flex: 1"><span style="font-size: 14px; font-weight: 700">Bank statements</span><span style="font-size: 12px; color: #A1A9B5">12 months · SBI ••4821 · consent until 24 Nov 2027</span></span><a href="e3-sources.html" style="font-size: 13px; font-weight: 700; text-decoration: none">Manage</a></div>
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 12px 0; border-bottom: 1px solid #22262D"><span style="font-size: 14px; font-weight: 700">Score history</span><span style="font-size: 12px; color: #A1A9B5">3 scores since Sep 2026</span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0"><span style="display: flex; flex-direction: column; gap: 2px; flex: 1"><span style="font-size: 14px; font-weight: 700">Sharing and access log</span><span style="font-size: 12px; color: #A1A9B5">Every approval and view</span></span><a href="c3-access-log.html" style="font-size: 13px; font-weight: 700; text-decoration: none">View</a></div>
+</section>
+
+<sc-if value="{{prepared}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 12px 16px; border-radius: 16px; background: rgba(45,212,191,0.12); font-size: 13px; line-height: 1.45; font-weight: 600">We’re preparing your file. You’ll get an SMS with a download link within 24 hours.</div>
+</sc-if>
+<button type="button" onClick="{{prepare}}" style="min-height: 52px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.08); background: #22262D; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>Download a copy of my data</button>
+
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px">
+<sc-if value="{{noConfirm}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{askDelete}}" style="width: 100%; min-height: 48px; border-radius: 999px; border: 1px solid rgba(251,113,133,0.45); background: transparent; color: #FB7185; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700">Delete my account</button>
+</sc-if>
+<sc-if value="{{confirm}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 24px; background: rgba(251,113,133,0.10); border: 1px solid rgba(251,113,133,0.35)">
+<span style="font-size: 16px; font-weight: 800">Delete everything?</span>
+<span style="font-size: 13px; line-height: 1.5; color: #A1A9B5">Your score, data and sharing end now. Suppliers lose access. We keep only what the law requires, then delete it.</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{cancel}}" style="min-height: 48px; border-radius: 999px; border: none; background: #22262D; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">Cancel</button>
+<a href="a1-welcome.html" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; background: #FB7185; color: #0B0D10; font-size: 14px; font-weight: 800; text-decoration: none">Delete</a>
+</div>
+</div>
+</sc-if>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+return {
+prepared: !!s.prepared,
+prepare: () => this.setState({ prepared: true }),
+confirm: !!s.confirm, noConfirm: !s.confirm,
+askDelete: () => this.setState({ confirm: true }),
+cancel: () => this.setState({ confirm: false })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

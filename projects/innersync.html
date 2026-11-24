@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Innersync: a health app concept by Kiran George that turns lab reports, wearable data and personal inputs into a living map of your body." />
+    <meta name="author" content="Kiran George" />
+    <title>Innersync – Kiran George</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="../css/bootstrapstyles.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/case-study.css" rel="stylesheet" />
+    <link href="../css/innersync.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="../css/case-space.css?v=3" rel="stylesheet" />
+</head>
+
+<body id="page-top" class="case-study cs-innersync cs-space">
+    <!-- starfield, shooting stars and comets, as on the home page (js/space-bg.js) -->
+    <canvas id="sp-canvas" aria-hidden="true"></canvas>
+    <nav class="navbar navbar-expand-lg bg-white text-uppercase fixed-top shadow-sm" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img style="width: 6rem;" src="../assets/img/mysign.png" alt="Kiran George, back to home"></a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-light text-dark rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#portfolio">Portfolio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="ae-hero">
+        <div class="container ae-hero__inner">
+            <div class="ae-hero__text">
+                <p class="ae-eyebrow">Health app concept &middot; 2025</p>
+                <h1 class="ae-hero__title">Innersync</h1>
+                <p class="ae-hero__lede">Lab reports, wearable stats and how you feel, brought together into one living map of your body, so you can act before problems start.</p>
+                <div class="ae-hero__actions">
+                    <a class="btn ae-btn-light" href="#mirror">Explore the body map</a>
+                    <a class="ae-link-light" href="#problem">Why I made it <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="is-hero-media">
+                <video autoplay muted loop playsinline poster="../assets/img/portfolio/innersync/1.webp" aria-label="Innersync app preview: a glowing body silhouette with organs highlighted">
+                    <source src="../assets/img/portfolio/innersync/innersync_cover.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="container">
+            <dl class="ae-meta">
+                <div><dt>Role</dt><dd>Concept, UX and UI design (solo)</dd></div>
+                <div><dt>Type</dt><dd>Self-initiated concept, tablet app</dd></div>
+                <div><dt>Timeline</dt><dd>Summer 2025</dd></div>
+                <div><dt>Tools</dt><dd>Figma</dd></div>
+            </dl>
+        </div>
+    </header>
+
+    <main>
+        <!-- Problem -->
+        <section class="ae-section" id="problem">
+            <div class="container">
+                <div class="is-split">
+                    <div>
+                        <p class="ae-kicker">The problem</p>
+                        <h2 class="ae-h2">The silent shift</h2>
+                        <p class="is-stat"><span class="is-stat__num">70%+</span> <span class="is-stat__label">of deaths worldwide are caused by non-communicable diseases.</span></p>
+                        <p>Heart disease, diabetes, thyroid imbalance, vitamin deficiencies, hormonal shifts and chronic stress develop quietly. Modern habits like a poor diet, little movement and constant stress let them build up for years without symptoms.</p>
+                        <p>We already collect plenty of health data: blood tests, smartwatch stats, fitness apps. But it sits in separate places, and rarely comes together in a way that makes sense.</p>
+                        <p class="ae-callout">Early awareness and continuous monitoring are the best way to prevent long-term damage.</p>
+                    </div>
+                    <figure class="is-roots">
+                        <img src="../assets/img/portfolio/innersync/roots-tree.jpg" width="720" height="880" loading="lazy"
+                            alt="Illustration of a withering tree whose roots are labelled with everyday causes: junk food, lack of sleep, stress, alcohol, nicotine, lack of exercise, air pollution and nutritional deficiency." />
+                        <figcaption>Illness grows from roots we don't see: everyday habits that slowly add up.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Idea -->
+        <section class="ae-section ae-section--dark" id="idea">
+            <div class="container ae-narrow">
+                <p class="ae-kicker ae-kicker--light">The idea</p>
+                <h2 class="ae-h2">A health mirror</h2>
+                <p>Innersync takes your test results, wearable data and personal check-ins, and turns them into something you can see at a glance: a body where every organ shows how it is doing right now.</p>
+                <p>Instead of reading numbers in a PDF, you look at your body and see where to pay attention. Tap an organ, and the app explains what changed and suggests one small step.</p>
+                <blockquote class="is-quote">It's not about reacting to illness. It's about staying ahead of it.</blockquote>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="ae-section ae-section--soft" id="how">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">How it works</p>
+                    <h2 class="ae-h2">From scattered data to clear next steps</h2>
+                    <p>Three kinds of input go in. Innersync combines them and gives back four things you can actually use.</p>
+                </div>
+
+                <div class="is-flow" role="group" aria-label="Innersync data flow">
+                    <ul class="is-flow__col" aria-label="Inputs">
+                        <li class="is-node"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i><div><strong>Lab reports</strong><span>Blood tests, cholesterol, thyroid, vitamins</span></div></li>
+                        <li class="is-node"><i class="fa-solid fa-clock" aria-hidden="true"></i><div><strong>Wearable data</strong><span>Heart rate, HRV, sleep, activity</span></div></li>
+                        <li class="is-node"><i class="fa-solid fa-microphone-lines" aria-hidden="true"></i><div><strong>Personal inputs</strong><span>Mood, stress, symptoms, habits</span></div></li>
+                    </ul>
+                    <div class="is-flow__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="is-flow__core">
+                        <span class="is-flow__core-ring" aria-hidden="true"></span>
+                        <strong>Innersync</strong>
+                        <span>combines and interprets</span>
+                    </div>
+                    <div class="is-flow__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+                    <ul class="is-flow__col" aria-label="Outputs">
+                        <li class="is-node is-node--out"><i class="fa-solid fa-person" aria-hidden="true"></i><div><strong>Reflections</strong><span>Your body map, organ by organ</span></div></li>
+                        <li class="is-node is-node--out"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><div><strong>Trends</strong><span>How markers change over months</span></div></li>
+                        <li class="is-node is-node--out"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i><div><strong>Nudges</strong><span>Small, personal suggestions</span></div></li>
+                        <li class="is-node is-node--out"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><div><strong>Book tests</strong><span>The right check-up, nearby</span></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive body map -->
+        <section class="ae-section is-section--night" id="mirror">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker ae-kicker--light">The data mirror</p>
+                    <h2 class="ae-h2">Every organ shows how it is doing</h2>
+                    <p>Each organ takes a status from your latest data. The app shows that status with colour, an icon and a short label, so it reads at a glance, even if you can't tell the colours apart.</p>
+                    <p class="ae-hint"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Pick a scenario, then tap a dot to open that organ.</p>
+                </div>
+
+                <div class="is-mirror">
+                    <div class="is-mirror__stage">
+                        <div class="is-scenarios" role="radiogroup" aria-label="Scenario">
+                            <button type="button" role="radio" aria-checked="true" data-scenario="steady">A steady week</button>
+                            <button type="button" role="radio" aria-checked="false" data-scenario="stressed">A stressful month</button>
+                        </div>
+
+                        <!-- The body render from the prototype. Organ tints, leader lines,
+                             dots and the floating message are added by js/innersync.js -->
+                        <div class="is-figure">
+                            <div class="is-figure__art">
+                                <div class="is-figure__frame">
+                                    <img class="is-figure__body" src="../assets/img/portfolio/innersync/body.webp" width="474" height="961"
+                                        alt="" aria-hidden="true" />
+                                    <div class="is-figure__tints" aria-hidden="true"></div>
+                                </div>
+                            </div>
+                            <svg class="is-figure__lines" viewBox="0 0 774 630" preserveAspectRatio="none" aria-hidden="true" focusable="false"></svg>
+                            <div class="is-figure__dots"></div>
+                            <p class="is-float" aria-hidden="true"></p>
+                        </div>
+
+                        <ul class="is-legend" aria-label="Status key">
+                            <li><span class="is-chip is-chip--good"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span> Healthy</li>
+                            <li><span class="is-chip is-chip--warning"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span> Keep an eye on it</li>
+                            <li><span class="is-chip is-chip--critical"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i></span> Needs attention</li>
+                        </ul>
+                    </div>
+
+                    <div class="is-panel" aria-live="polite">
+                        <!-- Filled by js/innersync.js -->
+                    </div>
+                </div>
+                <p class="is-note">Illustrative data for a concept. Not medical advice.</p>
+            </div>
+        </section>
+
+        <!-- Trends -->
+        <section class="ae-section" id="trends">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Trends over time</p>
+                    <h2 class="ae-h2">See the change, not just the number</h2>
+                    <p>A single test result says little. Innersync puts every result on a timeline, next to the healthy range, so you can spot early warnings and see your progress. In this example, the person starts daily walks in June after a nudge from the app.</p>
+                </div>
+
+                <div class="is-trend">
+                    <div class="is-trend__head">
+                        <h3 class="is-trend__title" id="trend-title">LDL cholesterol</h3>
+                        <div class="is-tabs" role="tablist" aria-label="Choose a marker">
+                            <button type="button" role="tab" aria-selected="true" data-marker="ldl">LDL</button>
+                            <button type="button" role="tab" aria-selected="false" data-marker="hdl">HDL</button>
+                            <button type="button" role="tab" aria-selected="false" data-marker="tg">Triglycerides</button>
+                            <button type="button" role="tab" aria-selected="false" data-marker="total">Total</button>
+                        </div>
+                    </div>
+                    <p class="is-trend__summary"></p>
+                    <div class="is-trend__chart">
+                        <!-- SVG chart drawn by js/innersync.js -->
+                        <div class="is-tooltip" role="status" hidden></div>
+                    </div>
+                    <details class="is-table">
+                        <summary>Show as a table</summary>
+                        <div class="is-table__wrap"></div>
+                    </details>
+                </div>
+                <p class="is-note is-note--dark">Illustrative data, in mg/dL. Healthy ranges are general adult guides.</p>
+            </div>
+        </section>
+
+        <!-- Nudges -->
+        <section class="ae-section ae-section--soft" id="nudges">
+            <div class="container">
+                <div class="is-split is-split--reverse">
+                    <div>
+                        <p class="ae-kicker">Nudges</p>
+                        <h2 class="ae-h2">Gentle next steps, based on your data</h2>
+                        <p>Health apps often warn without helping. Innersync turns each signal into one small, friendly step, in a warm tone rather than an alarming one.</p>
+                        <ul class="is-nudges">
+                            <li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><div><strong>Book a test</strong><span>"Elevated heart readings lately. A lipid test could make a big difference."</span></div></li>
+                            <li><i class="fa-solid fa-person-walking" aria-hidden="true"></i><div><strong>Make a small change</strong><span>"Even a 30-minute walk, five days a week, can lower LDL."</span></div></li>
+                            <li><i class="fa-solid fa-seedling" aria-hidden="true"></i><div><strong>Keep a good habit</strong><span>"You've had a balanced week. Keep screens off 30 minutes before bed."</span></div></li>
+                        </ul>
+                    </div>
+                    <figure class="ae-screen is-screen-dark">
+                        <img src="../assets/img/portfolio/innersync/nudges.jpg" width="940" height="980" loading="lazy"
+                            alt="Nudge screen: a heart alert reading 'Your heart's working harder than usual', a grid of organ tiles with status bars, and two tip cards, 'Prioritize daily movement' and 'Eat heart-smart'." />
+                        <figcaption><strong>Health overview.</strong> An alert for the organ that needs care, every other organ at a glance, and tips to act on.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screens -->
+        <section class="ae-section" id="screens">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">The interface</p>
+                    <h2 class="ae-h2">A closer look</h2>
+                </div>
+                <div class="is-gallery">
+                    <figure class="ae-screen is-screen-dark">
+                        <img src="../assets/img/portfolio/innersync/data-mirror.jpg" width="660" height="850" loading="lazy"
+                            alt="Tablet home screen with a 3D body. Organs glow in their status colour, with points to tap for details and a message: 'Your heart's asking for a little more care'." />
+                        <figcaption><strong>Home.</strong> The body map, with a search for tests nearby and a simple tab bar: Home, Tests, Health, Profile.</figcaption>
+                    </figure>
+                    <figure class="ae-screen is-screen-dark">
+                        <img src="../assets/img/portfolio/innersync/organ-insights.jpg" width="1080" height="940" loading="lazy"
+                            alt="Two tablet screens. Left: the brain in green with 'Mental wellness is in peak condition', HRV and sleep values, and a stress and sleep chart. Right: the heart in red with 'Heart health: needs attention' and an LDL and triglyceride chart." />
+                        <figcaption><strong>Organ detail.</strong> Tapping the brain or the heart opens what changed, the key numbers, and a trend line.</figcaption>
+                    </figure>
+                    <figure class="ae-screen is-screen-dark">
+                        <img src="../assets/img/portfolio/innersync/input-sources.jpg" width="800" height="900" loading="lazy"
+                            alt="A glowing figure made of particles, surrounded by a smartwatch, a microscope and a voice input icon, representing wearable, lab and personal data." />
+                        <figcaption><strong>Input sources.</strong> Wearables, lab results and voice or text check-ins feed the same picture.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prototype -->
+        <section class="ae-section ae-section--soft" id="prototype">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Prototype</p>
+                    <h2 class="ae-h2">Click through it yourself</h2>
+                    <p>The prototype is designed for a tablet and works best on a larger screen. Use full screen for the best view.</p>
+                </div>
+                <iframe class="figma-embed ae-embed" title="Innersync interactive prototype in Figma"
+                    src="https://embed.figma.com/proto/aigbSe1OCe2UzkYtJjpbNs/Envisioning?page-id=0%3A1&node-id=410-384&p=f&viewport=150%2C-50%2C0.07&scaling=scale-down&content-scaling=fixed&embed-host=share"
+                    allowfullscreen loading="lazy"></iframe>
+                <p class="ae-embed-note">
+                    <a href="https://www.figma.com/proto/aigbSe1OCe2UzkYtJjpbNs/Envisioning?page-id=0%3A1&node-id=410-384&p=f&scaling=scale-down&content-scaling=fixed" target="_blank" rel="noopener noreferrer">Open the prototype in Figma <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i></a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="ae-section" id="next">
+            <div class="container ae-narrow">
+                <p class="ae-kicker">Reflection</p>
+                <h2 class="ae-h2">Your body, clearly understood</h2>
+                <p>Innersync imagines health not as scattered reports and numbers, but as a clear, living picture of what is happening inside. It moves the focus from reacting to illness to staying aware every day.</p>
+                <p>It is a concept with illustrative data. If I took it further, I would:</p>
+                <ul class="ae-list">
+                    <li><strong>Test it with people</strong> who manage a long-term condition, and with people who just got a confusing lab report: do they understand the body map without help?</li>
+                    <li><strong>Work with doctors</strong> on the thresholds and the wording, so nudges are helpful without causing alarm.</li>
+                    <li><strong>Never rely on colour alone.</strong> The red, yellow and green statuses need icons and labels too, as in the demo above.</li>
+                    <li><strong>Design for trust:</strong> clear consent for each data source, and control over what is stored and shared.</li>
+                </ul>
+            </div>
+        </section>
+
+        <nav class="ae-back container" aria-label="Project navigation">
+            <a class="btn btn-outline-primary" href="../index.html#portfolio"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects</a>
+        </nav>
+    </main>
+
+    <div class="copyright py-4 text-center text-white" style="background-color: #1a252f;">
+        <div class="container"><small>Copyright &copy; Kiran George</small></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/case-study.js"></script>
+    <script src="../js/innersync.js"></script>
+    <script src="../js/space-bg.js?v=3"></script>
+</body>
+</html>

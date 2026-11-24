@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share score</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 22px 18px 24px; background: #0B0D10; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; gap: 16px; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="{{backHref}}" aria-label="Back to home" style="width: 44px; height: 44px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="flex: 1; font-size: 17px; font-weight: 800">{{shareTitle}}</span>
+</div>
+
+<sc-if value="{{noQr}}" hint-placeholder-val="{{ true }}">
+<section style="display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 24px; background: #171A1F; border: 1px solid rgba(167,139,250,0.35); box-shadow: 0 8px 28px rgba(167,139,250,0.18)">
+<div style="width: 96px; min-height: 64px; flex: none; border-radius: 18px; background: #22262D; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><span style="font-size: {{cardBigSize}}; line-height: 1; font-weight: 800">{{cardBig}}</span><span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; color: #C4B5FD">{{cardTag}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 16px; font-weight: 800">Suresh General Store</span><span style="font-size: 13px; color: #A1A9B5">{{cardSub}}</span><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: #5EEAD4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Verified by FairTradeScore</span></div>
+</section>
+</sc-if>
+<sc-if value="{{qr}}" hint-placeholder-val="{{ false }}">
+<section style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; border-radius: 24px; background: #F3F5F8; color: #0B0D10">
+<div style="width: 150px; height: 150px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px" role="img" aria-label="QR code for your score link">
+<span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span>
+<span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span>
+<span></span><span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #7C5CFA; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span></span>
+<span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #7C5CFA; border-radius: 3px"></span><span style="background: #7C5CFA; border-radius: 3px"></span><span style="background: #7C5CFA; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span>
+<span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #7C5CFA; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span>
+<span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span>
+<span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span></span><span style="background: #0B0D10; border-radius: 3px"></span><span style="background: #0B0D10; border-radius: 3px"></span>
+</div>
+<span style="font-size: 13px; font-weight: 700">A supplier scans this at your counter</span>
+</section>
+</sc-if>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 700; color: #A1A9B5">Link works for</span>
+<div role="radiogroup" aria-label="Link expiry" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 999px; background: #171A1F">
+<button type="button" role="radio" aria-checked="{{is7}}" onClick="{{pick7}}" style="min-height: 44px; border: none; border-radius: 999px; background: {{bg7}}; color: {{c7}}; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">7 days</button>
+<button type="button" role="radio" aria-checked="{{is30}}" onClick="{{pick30}}" style="min-height: 44px; border: none; border-radius: 999px; background: {{bg30}}; color: {{c30}}; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">30 days</button>
+</div>
+<span style="font-size: 12px; line-height: 1.45; color: #A1A9B5">Anyone with the link sees {{seesWhat}} only, until {{until}}. Every view shows in your <a href="c3-access-log.html">access log</a>.</span>
+</div>
+
+<section style="display: flex; flex-direction: column; padding: 4px 18px; border-radius: 24px; background: #171A1F">
+<button type="button" onClick="{{whatsapp}}" style="display: flex; align-items: center; gap: 14px; min-height: 60px; border: none; border-bottom: 1px solid #22262D; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; text-align: left"><span style="width: 36px; height: 36px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H8l-4 4z"></path></svg></span>Send on WhatsApp</button>
+<button type="button" onClick="{{toggleQr}}" style="display: flex; align-items: center; gap: 14px; min-height: 60px; border: none; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; text-align: left"><span style="width: 36px; height: 36px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M20 20h.01"></path></svg></span>{{qrLabel}}</button>
+</section>
+
+<sc-if value="{{toast}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 12px 16px; border-radius: 999px; background: #F3F5F8; color: #0B0D10; font-size: 14px; font-weight: 700; text-align: center">{{toastText}}</div>
+</sc-if>
+
+<button type="button" onClick="{{copy}}" style="margin-top: auto; min-height: 56px; border: none; border-radius: 999px; background: #A78BFA; box-shadow: 0 8px 28px rgba(167,139,250,0.35); color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">{{copyLabel}}</button>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"stage":{"editor":"enum","default":"early","options":["building","early","established"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const d = s.days || 7;
+const stage = this.props.stage ?? 'early';
+const st = {
+building: { back: 'b0-building.html', title: 'Share your trust profile', big: '2/3', size: '28px', tag: 'BUILDING', sub: 'Verified business · score building', sees: 'your verified details and progress' },
+early: { back: 'b0b-early.html', title: 'Share your early score', big: '62–74', size: '22px', tag: 'EARLY', sub: 'Early score · 3 verified credits', sees: 'your early score range' },
+established: { back: 'b1-home.html', title: 'Share your score', big: '72', size: '30px', tag: 'GOOD', sub: 'Good · confidence medium', sees: 'your score and band' }
+}[stage] || {};
+return {
+backHref: st.back, shareTitle: st.title, cardBig: st.big, cardBigSize: st.size, cardTag: st.tag, cardSub: st.sub, seesWhat: st.sees,
+is7: d === 7 ? 'true' : 'false', is30: d === 30 ? 'true' : 'false',
+bg7: d === 7 ? '#2A2F37' : 'transparent', c7: d === 7 ? '#F3F5F8' : '#A1A9B5',
+bg30: d === 30 ? '#2A2F37' : 'transparent', c30: d === 30 ? '#F3F5F8' : '#A1A9B5',
+pick7: () => this.setState({ days: 7, copied: false }),
+pick30: () => this.setState({ days: 30, copied: false }),
+until: d === 7 ? '1 Dec 2026' : '24 Dec 2026',
+qr: !!s.qr, noQr: !s.qr,
+qrLabel: s.qr ? 'Hide QR code' : 'Show QR code',
+toggleQr: () => this.setState({ qr: !s.qr }),
+toast: !!s.toast, toastText: s.toast || '',
+whatsapp: () => this.setState({ toast: 'Opening WhatsApp with your link…' }),
+copyLabel: s.copied ? 'Link copied ✓' : 'Copy link',
+copy: () => this.setState({ copied: true, toast: 'Link copied · fts.in/s/k7Q2' })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

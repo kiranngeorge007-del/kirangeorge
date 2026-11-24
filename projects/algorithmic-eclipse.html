@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Algorithmic Eclipse: a dashboard concept by Kiran George that makes the influence of recommendation algorithms visible." />
+    <meta name="author" content="Kiran George" />
+    <title>Algorithmic Eclipse – Kiran George</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="../css/bootstrapstyles.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/case-study.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="../css/case-space.css?v=3" rel="stylesheet" />
+</head>
+
+<body id="page-top" class="case-study cs-space">
+    <!-- starfield, shooting stars and comets, as on the home page (js/space-bg.js) -->
+    <canvas id="sp-canvas" aria-hidden="true"></canvas>
+    <nav class="navbar navbar-expand-lg bg-white text-uppercase fixed-top shadow-sm" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><img style="width: 6rem;" src="../assets/img/mysign.png" alt="Kiran George, back to home"></a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-light text-dark rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#portfolio">Portfolio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero: the eclipse opens as you scroll -->
+    <header class="ae-hero">
+        <div class="container ae-hero__inner">
+            <div class="ae-hero__text">
+                <p class="ae-eyebrow">MA thesis project &middot; 2025</p>
+                <h1 class="ae-hero__title">Algorithmic Eclipse</h1>
+                <p class="ae-hero__lede">A dashboard that shows how much of your feed is chosen by recommendation algorithms, and how much is chosen by you.</p>
+                <div class="ae-hero__actions">
+                    <a class="btn ae-btn-light" href="#prototype">Try the prototype</a>
+                    <a class="ae-link-light" href="#background">Why I made it <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="ae-eclipse ae-eclipse--hero" aria-hidden="true">
+                <div class="ae-eclipse__light"></div>
+                <div class="ae-eclipse__disc"></div>
+            </div>
+        </div>
+        <div class="container">
+            <dl class="ae-meta">
+                <div><dt>Role</dt><dd>Research, UX and UI design (solo)</dd></div>
+                <div><dt>Context</dt><dd>MA Visual &amp; Experience Design, University of Europe for Applied Sciences</dd></div>
+                <div><dt>Timeline</dt><dd>Winter semester 2025</dd></div>
+                <div><dt>Tools</dt><dd>Figma</dd></div>
+            </dl>
+        </div>
+    </header>
+
+    <main>
+        <!-- Background from the thesis -->
+        <section class="ae-section" id="background">
+            <div class="container ae-narrow">
+                <p class="ae-kicker">Background</p>
+                <h2 class="ae-h2">Our feeds decide more than we notice</h2>
+                <p>TikTok, Spotify, YouTube and Instagram choose much of what we watch and listen to. Their recommendation algorithms learn from every tap and serve us more of the same. Over time, feeds can narrow our taste, leave less room for chance discoveries, and reflect back a version of who the platform thinks we are.</p>
+                <p>None of this is visible to us. My MA thesis, <em>Investigating How Recommendation Algorithms Influence Taste, Creative Discovery, and Identity Formation</em>, looked at how people experience this. Every person I interviewed wanted more transparency about how their feed is shaped, or more control over it.</p>
+                <p class="ae-callout">Algorithmic Eclipse is my design response: a way to make that invisible influence visible.</p>
+            </div>
+        </section>
+
+        <!-- The idea, with a live demo built in HTML/CSS -->
+        <section class="ae-section ae-section--dark" id="idea">
+            <div class="container">
+                <div class="ae-idea">
+                    <div class="ae-idea__text">
+                        <p class="ae-kicker ae-kicker--light">The idea</p>
+                        <h2 class="ae-h2">Your own interests are the light. The algorithm is the shadow.</h2>
+                        <p>The eclipse sums up your digital life in one image. Three scores drive it: how much of what you see is pushed by algorithms, how varied your content is, and how often you explore something new.</p>
+                        <p>The more the algorithm leads, the further the dark disc moves across the light.</p>
+                        <p class="ae-hint"><i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Drag the scores to see it change.</p>
+                    </div>
+
+                    <div class="ae-demo">
+                        <div class="ae-eclipse ae-eclipse--demo" aria-hidden="true">
+                            <div class="ae-eclipse__light"></div>
+                            <div class="ae-eclipse__disc"></div>
+                        </div>
+                        <div class="ae-scores">
+                            <div class="ae-score">
+                                <label for="score-influence">Algorithmic Influence</label>
+                                <output for="score-influence">95%</output>
+                                <input type="range" id="score-influence" min="0" max="100" value="95" data-score="influence" />
+                            </div>
+                            <div class="ae-score">
+                                <label for="score-diversity">Content Diversity</label>
+                                <output for="score-diversity">25%</output>
+                                <input type="range" id="score-diversity" min="0" max="100" value="25" data-score="diversity" />
+                            </div>
+                            <div class="ae-score">
+                                <label for="score-curiosity">Curiosity Index</label>
+                                <output for="score-curiosity">30%</output>
+                                <input type="range" id="score-curiosity" min="0" max="100" value="30" data-score="curiosity" />
+                            </div>
+                        </div>
+                        <p class="ae-demo__status" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insight to design decision -->
+        <section class="ae-section" id="decisions">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Design decisions</p>
+                    <h2 class="ae-h2">From what people told me to what I designed</h2>
+                    <p>Four themes came out of my interviews. Each one became a part of the dashboard.</p>
+                </div>
+
+                <ol class="ae-decisions">
+                    <li class="ae-decision">
+                        <div class="ae-decision__heard">
+                            <span class="ae-label">What I heard</span>
+                            <h3>Feeds slowly narrow your taste</h3>
+                        </div>
+                        <i class="fa-solid fa-arrow-right ae-decision__arrow" aria-hidden="true"></i>
+                        <div class="ae-decision__made">
+                            <span class="ae-label">What I designed</span>
+                            <h3>Algorithmic Self</h3>
+                            <p>A ranked view of the content categories your feed has settled on, so you can see what it thinks you like.</p>
+                        </div>
+                    </li>
+                    <li class="ae-decision">
+                        <div class="ae-decision__heard">
+                            <span class="ae-label">What I heard</span>
+                            <h3>Discovery is easy, but predictable</h3>
+                        </div>
+                        <i class="fa-solid fa-arrow-right ae-decision__arrow" aria-hidden="true"></i>
+                        <div class="ae-decision__made">
+                            <span class="ae-label">What I designed</span>
+                            <h3>Discovery Split and Curiosity Index</h3>
+                            <p>How much content you found yourself versus what was pushed to you, and how often you try new creators and topics.</p>
+                        </div>
+                    </li>
+                    <li class="ae-decision">
+                        <div class="ae-decision__heard">
+                            <span class="ae-label">What I heard</span>
+                            <h3>The feed shows you a version of yourself</h3>
+                        </div>
+                        <i class="fa-solid fa-arrow-right ae-decision__arrow" aria-hidden="true"></i>
+                        <div class="ae-decision__made">
+                            <span class="ae-label">What I designed</span>
+                            <h3>Behaviour Timeline and Similarity Score</h3>
+                            <p>Bursts of curiosity set against echo-chamber phases, and how closely your current feed matches the past weeks.</p>
+                        </div>
+                    </li>
+                    <li class="ae-decision">
+                        <div class="ae-decision__heard">
+                            <span class="ae-label">What I heard</span>
+                            <h3>People want to see the logic and have a say</h3>
+                        </div>
+                        <i class="fa-solid fa-arrow-right ae-decision__arrow" aria-hidden="true"></i>
+                        <div class="ae-decision__made">
+                            <span class="ae-label">What I designed</span>
+                            <h3>Explanations and one clear summary</h3>
+                            <p>A plain-language explanation behind every metric, and a single eclipse that sums it all up at a glance.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Screens -->
+        <section class="ae-section ae-section--soft" id="screens">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">The dashboard</p>
+                    <h2 class="ae-h2">A closer look</h2>
+                </div>
+
+                <div class="ae-screens">
+                    <figure class="ae-screen ae-screen--main">
+                        <img src="../assets/img/portfolio/algorithmic-eclipse/dashboard.webp" width="1274" height="1827" loading="lazy"
+                            alt="Algorithmic Eclipse dashboard: a glowing eclipse above three scores (Algorithmic Influence 95%, Content Diversity 25%, Curiosity Index 30%), a bar chart of top content categories, and a behaviour timeline of curiosity spikes and echo-chamber dips." />
+                        <figcaption><strong>Overview.</strong> The eclipse and its three scores, the Algorithmic Self, and a behaviour timeline that shows bursts of curiosity and echo-chamber phases over the year.</figcaption>
+                    </figure>
+
+                    <div class="ae-screens__side">
+                        <figure class="ae-screen">
+                            <img src="../assets/img/portfolio/algorithmic-eclipse/algorithmic-influence.webp" width="1208" height="964" loading="lazy"
+                                alt="Algorithmic Influence detail view with a donut chart of algorithm-driven versus self-initiated content, a radar chart of engagement, completion and time spent, and a behaviour similarity line chart." />
+                            <figcaption><strong>Algorithmic Influence.</strong> What was recommended versus chosen, how strongly you engage with recommendations, and how similar your feed stays over time.</figcaption>
+                        </figure>
+                        <figure class="ae-screen">
+                            <img src="../assets/img/portfolio/algorithmic-eclipse/content-diversity.webp" width="1208" height="553" loading="lazy"
+                                alt="Content Diversity detail view with a chart of top content categories and a contrast profile of aligned, neutral and contrasting content." />
+                            <figcaption><strong>Content Diversity.</strong> Your top categories, and how much of your content matches, contrasts with, or sits outside your usual patterns.</figcaption>
+                        </figure>
+                    </div>
+
+                    <figure class="ae-screen">
+                        <img src="../assets/img/portfolio/algorithmic-eclipse/curiosity-index.webp" width="1208" height="553" loading="lazy"
+                            alt="Curiosity Index detail view with line charts of new creators explored and new topics attempted." />
+                        <figcaption><strong>Curiosity Index.</strong> New creators explored and new topics tried. Higher values mean more open exploration.</figcaption>
+                    </figure>
+                    <figure class="ae-screen">
+                        <img src="../assets/img/portfolio/algorithmic-eclipse/map-of-influence.webp" width="1284" height="872" loading="lazy"
+                            alt="Map of Influence with a world map of where consumed content comes from, a ranked country list, and a donut chart of top platforms." />
+                        <figcaption><strong>Map of Influence.</strong> Where your content comes from, and which platforms you spend it on.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prototype -->
+        <section class="ae-section" id="prototype">
+            <div class="container">
+                <div class="ae-narrow ae-narrow--left">
+                    <p class="ae-kicker">Prototype</p>
+                    <h2 class="ae-h2">Click through it yourself</h2>
+                    <p>Open the detail views from the overview. The prototype works best on a desktop screen.</p>
+                </div>
+                <iframe class="figma-embed ae-embed" title="Algorithmic Eclipse interactive prototype in Figma"
+                    src="https://embed.figma.com/proto/GJOPDuOGfqKIJJy1GFAbFj/Algorithmic-eclipse?page-id=0%3A1&node-id=10-80&p=f&viewport=-736%2C-455%2C0.44&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=10%3A80&embed-host=share"
+                    allowfullscreen loading="lazy"></iframe>
+                <p class="ae-embed-note">
+                    <a href="https://www.figma.com/proto/GJOPDuOGfqKIJJy1GFAbFj/Algorithmic-eclipse?page-id=0%3A1&node-id=10-80&p=f&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=10%3A80" target="_blank" rel="noopener noreferrer">Open the prototype in Figma <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i></a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="ae-section ae-section--soft" id="next">
+            <div class="container ae-narrow">
+                <p class="ae-kicker">What's next</p>
+                <h2 class="ae-h2">Where I would take it</h2>
+                <p>Algorithmic Eclipse is a concept with illustrative data, and I haven't tested it with users yet. My next steps would be:</p>
+                <ul class="ae-list">
+                    <li><strong>Test it</strong> with people who use these platforms every day: do they understand the eclipse at a glance, and does it change how they browse?</li>
+                    <li><strong>Add the controls people asked for</strong> in the interviews: a reset button, an explore mode, and sliders to tune recommendations.</li>
+                    <li><strong>Design the "Connect profiles" step</strong> so people stay in control of what data they share.</li>
+                </ul>
+            </div>
+        </section>
+
+        <nav class="ae-back container" aria-label="Project navigation">
+            <a class="btn btn-outline-primary" href="../index.html#portfolio"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects</a>
+        </nav>
+    </main>
+
+    <div class="copyright py-4 text-center text-white" style="background-color: #1a252f;">
+        <div class="container"><small>Copyright &copy; Kiran George</small></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/case-study.js"></script>
+    <script src="../js/space-bg.js?v=3"></script>
+</body>
+</html>

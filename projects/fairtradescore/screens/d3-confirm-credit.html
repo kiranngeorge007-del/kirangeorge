@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Confirm new credit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #050608; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; font-variant-numeric: tabular-nums">
+
+<div aria-hidden="true" style="position: absolute; left: 18px; right: 18px; top: 26px; display: flex; flex-direction: column; gap: 14px; opacity: 0.28"><span style="font-size: 28px; font-weight: 800">Credits</span><div style="height: 90px; border-radius: 24px; background: #171A1F"></div></div>
+
+<div role="dialog" aria-label="Confirm new credit from Mehta Wholesale" style="position: relative; background: #171A1F; border-top: 1px solid rgba(255,255,255,0.08); box-shadow: 0 -20px 50px rgba(0,0,0,0.6); border-radius: 32px 32px 0 0; padding: 12px 20px 22px; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: center; width: 40px; height: 4px; border-radius: 999px; background: #3A3F48"></span>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 48px; height: 48px; border-radius: 999px; background: rgba(167,139,250,0.2); color: #C4B5FD; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center">MW</span><div style="display: flex; flex-direction: column"><span style="font-size: 16px; font-weight: 800">Mehta Wholesale</span><span style="font-size: 12px; color: #A1A9B5">Added a new credit · 24 Nov, 11:40</span></div></div>
+
+<sc-if value="{{asking}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 23px; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em">Is this credit correct?</span>
+<div style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: #22262D; font-size: 14px">
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-bottom: 1px solid #2A2F37"><span style="color: #A1A9B5">Amount</span><b style="font-size: 18px">₹15,600</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-bottom: 1px solid #2A2F37"><span style="color: #A1A9B5">Invoice</span><b>MW-2291</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-bottom: 1px solid #2A2F37"><span style="color: #A1A9B5">Goods</span><b>38 cartons · FMCG</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center"><span style="color: #A1A9B5">Due</span><b>24 Dec · 30 days</b></div>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #A1A9B5">No reply in 47 h? It’s added as unconfirmed, which counts for less in your score.</span>
+<button type="button" onClick="{{confirm}}" style="min-height: 56px; border: none; border-radius: 999px; background: #A78BFA; box-shadow: 0 8px 28px rgba(167,139,250,0.35); color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Yes, it’s correct</button>
+<button type="button" onClick="{{reject}}" style="min-height: 48px; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; background: #22262D; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700">Something’s wrong</button>
+</div>
+</sc-if>
+
+<sc-if value="{{rejecting}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 21px; line-height: 1.2; font-weight: 800">What’s wrong?</span>
+<div role="radiogroup" aria-label="Reason" style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: #22262D">
+<sc-for list="{{reasons}}" as="r" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{r.checked}}" onClick="{{r.pick}}" style="display: flex; align-items: center; gap: 12px; min-height: 52px; border: none; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; text-align: left"><span style="width: 20px; height: 20px; border-radius: 999px; border: {{r.ring}}; box-sizing: border-box; flex: none"></span>{{r.label}}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{send}}" style="min-height: 56px; border: none; border-radius: 999px; background: #FB7185; color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Send to Mehta Wholesale</button>
+<button type="button" onClick="{{back}}" style="min-height: 44px; border: none; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700">Back</button>
+</div>
+</sc-if>
+
+<sc-if value="{{finished}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="width: 56px; height: 56px; border-radius: 999px; background: {{doneBg}}; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{doneColor}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+<span style="font-size: 22px; line-height: 1.2; font-weight: 800">{{doneTitle}}</span>
+<span style="font-size: 14px; line-height: 1.55; color: #A1A9B5">{{doneBody}}</span>
+<a href="d1-payments.html" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: #A78BFA; color: #0B0D10; font-size: 16px; font-weight: 800; text-decoration: none">Done</a>
+</div>
+</sc-if>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const step = s.step || 'ask';
+const reason = s.reason || 'amount';
+const rs = [['notmine', 'Not my order'], ['amount', 'Amount or due date is wrong'], ['paid', 'I’ve already paid this']];
+const ok = step === 'confirmed';
+return {
+asking: step === 'ask', rejecting: step === 'reject', finished: step === 'confirmed' || step === 'disputed',
+reasons: rs.map(r => ({ label: r[1], checked: r[0] === reason ? 'true' : 'false', ring: r[0] === reason ? '6px solid #FB7185' : '2px solid #3A3F48', pick: () => this.setState({ reason: r[0] }) })),
+doneBg: ok ? 'rgba(45,212,191,0.16)' : 'rgba(251,191,36,0.14)',
+doneColor: ok ? '#2DD4BF' : '#FBBF24',
+doneTitle: ok ? 'Added to your credits' : 'Sent to Mehta Wholesale',
+doneBody: ok ? 'Verified by both of you. We’ll remind you 3 days before 24 Dec.' : 'They’ll fix or cancel it. Until then it won’t count in your score.',
+confirm: () => this.setState({ step: 'confirmed' }),
+reject: () => this.setState({ step: 'reject' }),
+back: () => this.setState({ step: 'ask' }),
+send: () => this.setState({ step: 'disputed' })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

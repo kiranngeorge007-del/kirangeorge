@@ -1,0 +1,714 @@
+/* ============================================= */
+/* FairTradeScore case study                     */
+/* Builds on case-study.css; ft- = FairTradeScore */
+/* ============================================= */
+
+/* Midnight palette from the project's design system.
+   Overrides the shared ae- tokens so the shared layout picks it up. */
+.cs-fts {
+  --ae-night: #0B0D10;
+  --ae-plum: #1d1830;
+  --ae-violet: #6247D9;      /* accent on light backgrounds (passes 4.5:1 on white) */
+  --ae-glow: #C4B5FD;        /* accent on dark backgrounds */
+  --ae-text: #F3F5F8;
+  --ae-text-muted: #A1A9B5;
+
+  --ft-card: #171A1F;
+  --ft-violet: #A78BFA;
+  --ft-teal: #0F766E;
+  --ft-amber: #B45309;
+}
+
+.cs-fts .ae-hero {
+  background:
+    radial-gradient(50rem 34rem at 78% 40%, rgba(167, 139, 250, 0.28), transparent 70%),
+    linear-gradient(160deg, var(--ae-plum) 0%, var(--ae-night) 62%);
+}
+
+.cs-fts .ae-section--dark {
+  background:
+    radial-gradient(40rem 30rem at 85% 30%, rgba(167, 139, 250, 0.16), transparent 70%),
+    linear-gradient(180deg, var(--ae-night) 0%, #14121d 100%);
+}
+
+/* ---------- Device frames (scaled screens: .dc-frame in style.css) ---------- */
+.ft-phone {
+  width: 100%;
+  max-width: 19rem;
+  margin-inline: auto;
+  padding: 0.55rem;
+  border-radius: 2.6rem;
+  background: #1b1e24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.ft-phone .dc-frame {
+  border-radius: 2.1rem;
+}
+
+.ft-browser,
+.ft-board {
+  border-radius: 0.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 18px 50px rgba(12, 10, 20, 0.16);
+  background: #fff;
+}
+
+.ft-browser::before {
+  content: "";
+  display: block;
+  height: 1.6rem;
+  background:
+    radial-gradient(circle at 1rem 50%, #e5e7eb 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 1.8rem 50%, #e5e7eb 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 2.6rem 50%, #e5e7eb 0.28rem, transparent 0.3rem),
+    #f6f7f9;
+  border-bottom: 1px solid #eceef2;
+}
+
+/* ---------- Hero visual: dashboard behind, phone in front ---------- */
+.ft-hero-visual {
+  position: relative;
+  padding: 1rem 0 2rem;
+}
+
+.ft-desk {
+  width: 92%;
+  margin-left: auto;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 0.9;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.ft-phone--hero {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42%;
+  max-width: 14rem;
+}
+
+/* ---------- Prototype walkthrough (js/ft-prototype.js) ---------- */
+.ft-proto {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 62rem) {
+  .ft-proto {
+    grid-template-columns: 1fr minmax(0, 20rem);
+    grid-template-areas: "intro device" "panel device";
+    column-gap: 5rem;
+    row-gap: 1.5rem;
+  }
+  .ft-proto__intro { grid-area: intro; align-self: end; }
+  .ft-proto__device { grid-area: device; }
+  .ft-proto__panel { grid-area: panel; align-self: start; }
+}
+
+.ft-proto__intro p:last-child { margin-bottom: 0; }
+
+.ft-proto__device .ft-phone {
+  max-width: 17.5rem;
+}
+
+@media (min-width: 62rem) {
+  .ft-proto__device .ft-phone { max-width: 20rem; }
+}
+
+/* on phones, the live prototype grows so its buttons are comfortable to tap */
+@media (max-width: 61.98rem) {
+  .ft-proto.is-live .ft-proto__device .ft-phone { max-width: 21rem; }
+}
+
+.ft-proto__screen {
+  position: relative;
+  aspect-ratio: 390 / 844;
+  overflow: hidden;
+  border-radius: 2.1rem;
+  background: #0B0D10;
+}
+
+.ft-proto__layer {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.45s ease, filter 0.5s ease;
+  will-change: transform;
+}
+
+.ft-proto__layer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 844px;
+  border: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+.ft-proto.is-live .ft-proto__layer iframe { pointer-events: auto; }
+
+/* screen transitions: a layer starts in its is-in-* state and settles; the old one leaves */
+.ft-proto__layer.is-loading { visibility: hidden; }
+.ft-proto__layer.is-in-push { transform: translateX(100%); }
+.ft-proto__layer.is-out-push { transform: translateX(-28%); filter: brightness(0.5); }
+.ft-proto__layer.is-in-back { transform: translateX(-28%); filter: brightness(0.5); }
+.ft-proto__layer.is-out-back { transform: translateX(100%); z-index: 2; }
+.ft-proto__layer.is-in-up { transform: translateY(100%); }
+.ft-proto__layer.is-out-up { filter: brightness(0.6); }
+.ft-proto__layer.is-in-down { filter: brightness(0.6); }
+.ft-proto__layer.is-out-down { transform: translateY(100%); z-index: 2; }
+.ft-proto__layer.is-in-fade { opacity: 0; }
+
+/* hotspot hints: tapping an empty spot shows everything that can be tapped */
+.ft-proto__hots {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ft-proto__hots.is-on { animation: ft-hots 1.1s ease forwards; }
+
+.ft-proto__hots span {
+  position: absolute;
+  border-radius: 0.4rem;
+  background: rgba(167, 139, 250, 0.32);
+  border: 1.5px solid #C4B5FD;
+}
+
+@keyframes ft-hots {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* the finger: a soft touch point that moves to each control and presses it */
+.ft-proto__finger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin: -1.3rem 0 0 -1.3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.38);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.45, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.ft-proto__finger.is-on { opacity: 1; }
+
+.ft-proto__finger::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  opacity: 0;
+}
+
+.ft-proto__finger.is-press {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.ft-proto__finger.is-press::after {
+  animation: ft-ripple 0.55s ease-out;
+}
+
+@keyframes ft-ripple {
+  from { transform: scale(0.8); opacity: 0.9; }
+  to { transform: scale(2); opacity: 0; }
+}
+
+.ft-proto__badge {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  z-index: 6;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(11, 13, 16, 0.88);
+  border: 1px solid rgba(196, 181, 253, 0.5);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 0.5rem);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.ft-proto__badge.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* chapters, caption and controls */
+.ft-proto__chapters {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.ft-proto__chapters button {
+  width: 100%;
+  min-height: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.3rem 0 0;
+  border: 0;
+  background: none;
+  color: var(--ae-text-muted);
+  text-align: left;
+  cursor: pointer;
+}
+
+.ft-proto__n {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.ft-proto__t {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.ft-proto__bar {
+  order: -1;
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.ft-proto__bar i {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--ft-violet);
+  transition: width 0.4s ease;
+}
+
+.ft-proto__chapters button[aria-current="step"] { color: #fff; }
+.ft-proto__chapters button[aria-current="step"] .ft-proto__n { color: var(--ae-glow); }
+.ft-proto__chapters button:hover { color: #fff; }
+
+.ft-proto__chapters button:focus-visible,
+.ft-proto__btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 0.4rem;
+}
+
+@media (max-width: 30rem) {
+  .ft-proto__t { font-size: 0.72rem; }
+}
+
+.case-study .ft-proto__caption {
+  min-height: 4.2em;
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.45;
+  color: #fff;
+}
+
+.ft-proto__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ft-proto__btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ft-proto__btn:hover { background: rgba(255, 255, 255, 0.08); }
+
+.ft-proto__btn--play {
+  width: 3.25rem;
+  height: 3.25rem;
+  background: var(--ft-violet);
+  border-color: var(--ft-violet);
+  color: var(--ae-night);
+}
+
+.ft-proto__btn--play:hover { background: var(--ae-glow); }
+
+.ft-proto__btn:disabled { opacity: 0.35; cursor: default; }
+.ft-proto__btn:disabled:hover { background: transparent; }
+
+.ft-proto__btn--text {
+  width: auto;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* mode switch: watch the tour, or try it yourself */
+.ft-proto__modes {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ft-proto__modes button {
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ae-text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ft-proto__modes button[aria-pressed="true"] {
+  background: var(--ft-violet);
+  color: var(--ae-night);
+}
+
+.ft-proto__modes button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.ft-proto__hint {
+  margin: -0.75rem 0 1.25rem;
+  font-size: 0.92rem;
+  color: var(--ae-text-muted);
+}
+
+.ft-proto__hint:empty { display: none; }
+
+.ft-proto__live-controls { display: none; }
+.ft-proto.is-live .ft-proto__live-controls { display: flex; }
+.ft-proto.is-live .ft-proto__tour-controls { display: none; }
+.ft-proto.is-live .ft-proto__caption { min-height: 0; }
+
+.ft-proto__icon-play { display: none; }
+.ft-proto.is-paused .ft-proto__icon-play { display: block; }
+.ft-proto.is-paused .ft-proto__icon-pause { display: none; }
+
+.ft-proto__counter {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--ae-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft-proto__layer,
+  .ft-proto__finger { transition-duration: 0.01s; }
+  .ft-proto__finger.is-press::after { animation: none; }
+}
+
+/* ---------- Problem ---------- */
+.ft-sides {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .ft-sides { grid-template-columns: 1fr 1fr; }
+}
+
+.ft-side {
+  padding: 1.75rem;
+  border-radius: 1rem;
+}
+
+.ft-side p { margin: 0; }
+
+.ft-side--retailer { background: #EFEAFF; }
+.ft-side--supplier { background: #FDF2E3; }
+.ft-side--supplier .ae-label { color: var(--ft-amber); }
+
+.case-study .ft-side__quote {
+  margin: 0.25rem 0 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--cs-ink);
+}
+
+/* ---------- Process ---------- */
+.ft-steps {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+}
+
+.ft-steps li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.8rem;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.ft-steps span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ae-violet);
+}
+
+.ft-steps strong {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  color: var(--cs-ink);
+}
+
+.ft-steps li.is-next {
+  background: var(--ae-night);
+  border-color: var(--ae-night);
+  color: var(--ae-text-muted);
+}
+
+.ft-steps li.is-next strong { color: #fff; }
+.ft-steps li.is-next span { color: var(--ae-glow); }
+
+.case-study .ft-h3 {
+  margin: 3rem 0 1.25rem;
+  font-size: 1.3rem;
+}
+
+.ft-principles {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.ft-principles div {
+  padding: 1.25rem;
+  border-radius: 0.8rem;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+}
+
+.ft-principles strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--cs-ink);
+}
+
+.ft-principles p { margin: 0; font-size: 0.95rem; }
+
+/* ---------- Score stages ---------- */
+.ft-stages {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 62rem) {
+  .ft-stages { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; }
+}
+
+.ft-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0 1.25rem;
+}
+
+.ft-switch button {
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: var(--ae-text);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ft-switch button[aria-selected="true"] {
+  background: var(--ft-violet);
+  border-color: var(--ft-violet);
+  color: var(--ae-night);
+}
+
+.ft-switch button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.ft-stage-info {
+  min-height: 9rem;
+  padding: 1.4rem 1.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.case-study .ft-stage-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.ft-stage-info p { margin: 0; }
+.ft-stage-info strong { color: #fff; }
+
+.ft-caption {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ae-text-muted);
+}
+
+/* ---------- What changed ---------- */
+.ft-changes {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 62rem) {
+  .ft-changes { grid-template-columns: repeat(3, 1fr); }
+}
+
+.ft-changes li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--cs-line);
+  box-shadow: var(--cs-shadow);
+}
+
+.case-study .ft-changes h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.ft-before,
+.ft-after {
+  padding: 0.85rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.ft-before { background: #FDF2E3; color: #5A3A12; }
+.ft-after { background: #E6F4F1; color: #0B4D38; }
+.ft-before .ae-label { color: var(--ft-amber); margin-bottom: 0.2rem; }
+.ft-after .ae-label { color: var(--ft-teal); margin-bottom: 0.2rem; }
+
+.ft-changes p { margin: 0; font-size: 0.95rem; }
+
+/* ---------- Trust ---------- */
+.ft-split {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 62rem) {
+  .ft-split { grid-template-columns: 1fr 1.05fr; gap: 4rem; }
+}
+
+.ft-hint {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: var(--ae-violet);
+}
+
+.ft-phones {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ft-phones--three {
+  margin-top: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.ft-fig {
+  margin: 0;
+}
+
+.ft-fig figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.ft-fig figcaption strong { color: var(--cs-ink); }
+
+.ae-section--dark .ft-fig figcaption { color: var(--ae-text-muted); }
+.ae-section--dark .ft-fig figcaption strong { color: #fff; }
+
+.ft-fig--wide {
+  margin-top: 2.5rem;
+}
+
+.ft-fig--wide figcaption { text-align: left; }
+
+@media (max-width: 30rem) {
+  .ft-phones { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Upload statements</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 24px 22px 26px; background: #0B0D10; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; gap: 18px; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 14px">
+<a href="a4-bank.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 800; letter-spacing: -0.02em">Upload bank statements</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; font-weight: 500; color: #A1A9B5">PDFs from your bank or net banking, covering the last 12 months.</p>
+</div>
+
+<button type="button" onClick="{{pick}}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 150px; border-radius: 24px; border: 2px dashed rgba(167,139,250,0.55); background: rgba(167,139,250,0.06); color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif">
+<span style="width: 48px; height: 48px; border-radius: 16px; background: rgba(167,139,250,0.18); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg></span>
+<span style="font-size: 16px; font-weight: 800">{{pickTitle}}</span>
+<span style="font-size: 13px; font-weight: 500; color: #A1A9B5">{{pickSub}}</span>
+</button>
+
+<section style="display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 24px; background: #171A1F; border: 1px solid rgba(255,255,255,0.06)">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #22262D; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex: none">PDF</span><div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-size: 14px; font-weight: 700">SBI_Apr-Sep_2026.pdf</span><span style="font-size: 12px; color: #5EEAD4; font-weight: 600">Read · 6 months found</span></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 40px; height: 40px; border-radius: 12px; background: #22262D; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex: none">PDF</span><div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><span style="font-size: 14px; font-weight: 700">SBI_Oct25-Mar26.pdf</span><span style="font-size: 12px; color: #FBBF24; font-weight: 600">Locked · needs its password</span></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></div>
+<label for="hf-pdf-pass" style="font-size: 13px; font-weight: 600; color: #A1A9B5">PDF password</label>
+<input id="hf-pdf-pass" type="password" value="••••••••" style="height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0B0D10; border: 2px solid #A78BFA; box-shadow: 0 0 0 4px rgba(167,139,250,0.18); color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700">
+<span style="font-size: 12px; line-height: 1.45; color: #A1A9B5">Banks often use your date of birth or customer ID. We never save this password.</span>
+</div>
+</section>
+
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #171A1F; font-size: 13px; line-height: 1.45; font-weight: 500; color: #A1A9B5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A1A9B5" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg><span>Uploaded statements give a <b style="color: #F3F5F8">lower-confidence</b> snapshot. Connect your bank later to strengthen it.</span></div>
+
+<a href="a7-generating.html" style="margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: #A78BFA; box-shadow: 0 8px 28px rgba(167,139,250,0.35); color: #0B0D10; font-size: 16px; font-weight: 800; text-decoration: none">Upload &amp; continue</a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const open = !!(this.state && this.state.open);
+return {
+pickTitle: open ? 'Choose more PDF files' : 'Choose PDF files',
+pickSub: open ? 'Files opened · pick the rest of your 12 months' : 'or pick from WhatsApp downloads',
+pick: () => this.setState({ open: true })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

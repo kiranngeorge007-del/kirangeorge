@@ -11,12 +11,17 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous" defer></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link href="css/bootstrapstyles.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style.css?v=3" rel="stylesheet" />
+    <link href="css/space.css?v=3" rel="stylesheet" />
 </head>
 
-<body id="page-top">
-    <nav class="navbar navbar-expand-lg bg-white text-uppercase fixed-top shadow-sm" id="mainNav">
+<body id="page-top" class="sp-home">
+    <!-- Space background: stars, shooting stars, comets, the Milky Way and the solar system (js/space.js) -->
+    <canvas id="sp-canvas" aria-hidden="true"></canvas>
+
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#page-top"><img style="width: 6rem;" src="assets/img/mysign.png" alt="Kiran George"></a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-light text-dark rounded" type="button"
@@ -34,42 +39,99 @@
         </div>
     </nav>
 
-    <header>
-        <section id="hero-1785">
-            <div class="cs-container">
-                <div class="cs-content">
-                    <h1 class="cs-title">Hello!</h1>
-                    <h1>I'm Kiran George</h1>
-                    <p class="cs-text">
-                        Design, to me, is about solving real problems with empathy and clarity.
-                        I believe good design feels effortless. It guides, supports, and connects.
-                        It's not just about how things look, but how they work and make people feel.
-                        I approach every project as a process of learning, refining, and creating with purpose.
-                    </p>
-                </div>
-
-                <div class="cs-illustration">
-                    <img src="assets/img/kiranghero.png" alt="Kiran George Illustration" fetchpriority="high" decoding="async">
-                </div>
+    <!-- The journey: a tall section whose scroll progress drives the camera in js/space.js.
+         Deep space -> the Milky Way -> the solar system -> projects. -->
+    <header class="sp-journey">
+        <div class="sp-stage">
+            <div class="sp-intro container">
+                <p class="sp-eyebrow">Hello, I'm</p>
+                <h1 class="sp-title">Kiran George</h1>
+                <p class="sp-role">UX/UI designer</p>
+                <p class="sp-lede">
+                    Design, to me, is about solving real problems with empathy and clarity.
+                    I believe good design feels effortless. It guides, supports, and connects.
+                    It's not just about how things look, but how they work and make people feel.
+                </p>
+                <a class="sp-btn" href="#portfolio">View my work <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
             </div>
-        </section>
+
+            <p class="sp-label sp-label--galaxy" aria-hidden="true"><span>The Milky Way</span> 100,000 light-years across</p>
+            <p class="sp-label sp-label--sun" aria-hidden="true"><span>The solar system</span> and somewhere on that blue dot, these projects</p>
+
+            <div class="sp-cue" aria-hidden="true">
+                <span>Scroll to explore</span>
+                <i></i>
+            </div>
+        </div>
     </header>
 
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
+            <p class="sp-kicker text-center">Selected work</p>
             <h2 class="page-section-heading text-center mb-5">Projects</h2>
 
             <section id="projects" class="projects-section py-5">
                 <div class="container">
 
+                    <div class="row align-items-center mb-5 flex-md-row-reverse">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <a class="project-img d-block" href="projects/algorithmic-eclipse.html" aria-label="Algorithmic Eclipse case study">
+                                <img src="assets/img/portfolio/algorithmic-eclipse/cover.webp" alt="Algorithmic Eclipse dashboard with a glowing eclipse and three scores" class="responsive-media" width="1274" height="717" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="project-text">
+                                <h3 class="project-title">Algorithmic Eclipse</h3>
+                                <p class="project-desc">
+                                    A dashboard concept that shows how much of your feed is chosen by recommendation
+                                    algorithms and how much by you, turning their invisible influence into one simple
+                                    image. Designed as my MA thesis project.
+                                </p>
+                                <a href="projects/algorithmic-eclipse.html" class="btn btn-outline-primary">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row align-items-center mb-5">
                         <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal2" style="cursor: pointer;">
+                            <a class="project-img d-block" href="projects/fairtradescore.html" aria-label="FairTradeScore case study">
+                                <!-- live mini version of the real screens (scaled by js/dc-frame.js) -->
+                                <div class="ftc-cover responsive-media" aria-hidden="true">
+                                    <div class="ftc-desk">
+                                        <div class="dc-frame" data-w="1440" data-h="954">
+                                            <iframe src="projects/fairtradescore/screens/x2-overview.html" title="" tabindex="-1" loading="lazy"></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="ftc-phone">
+                                        <div class="dc-frame" data-w="390" data-h="844">
+                                            <iframe src="projects/fairtradescore/screens/b1-home.html?showStage=false" title="" tabindex="-1" loading="lazy"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="project-text">
+                                <h3 class="project-title">FairTradeScore</h3>
+                                <p class="project-desc">
+                                    A trade trust score that helps small retailers in India prove they pay on time, and
+                                    helps suppliers decide who to give credit to. Designed end to end: research, flows,
+                                    a brand and design system, and 69 hi-fi screens across an app, a dashboard and a website.
+                                    Hi-fi complete &middot; usability testing next.
+                                </p>
+                                <a href="projects/fairtradescore.html" class="btn btn-outline-primary">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center mb-5 flex-md-row-reverse">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <a class="project-img d-block" href="projects/innersync.html" aria-label="Innersync case study">
                                 <video class="responsive-media" autoplay muted loop playsinline poster="assets/img/portfolio/innersync/1.webp">
                                     <source src="assets/img/portfolio/innersync/innersync_cover.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <div class="project-text">
@@ -80,105 +142,7 @@
                                     provide personalized insights for better lifestyle choices. It helps users
                                     understand their body clearly and make small, consistent changes before problems arise.
                                 </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal2">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-5 flex-md-row-reverse">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal4" style="cursor: pointer;">
-                                <img src="assets/img/portfolio/sociout/socioutcover169.jpg" alt="Sociout" class="responsive-media" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="project-text">
-                                <h3 class="project-title">Sociout</h3>
-                                <p class="project-desc">
-                                    A UX case study for an app that helps users easily discover like-minded people and
-                                    nearby events based on their interests. It simplifies event discovery, socializing,
-                                    and networking by providing personalized suggestions, best deals, and a smooth user experience.
-                                </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal4">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-5">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal1" style="cursor: pointer;">
-                                <video class="responsive-media" autoplay muted loop playsinline poster="assets/img/portfolio/henzoslide.webp">
-                                    <source src="assets/img/portfolio/henzoo.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="project-text">
-                                <h3 class="project-title">Henzocare</h3>
-                                <p class="project-desc">
-                                    Design and development of an aesthetic
-                                    and user-friendly e-commerce website for a client, contributing to brand
-                                    identity design and visual consistency using user centred design, vibe coding and shopify.
-                                </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal1">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-5 flex-md-row-reverse">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal3" style="cursor: pointer;">
-                                <video class="responsive-media" autoplay muted loop playsinline poster="assets/img/portfolio/resurgslide1.webp">
-                                    <source src="assets/img/portfolio/resurgcov.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="project-text">
-                                <h3 class="project-title">Resurg.in</h3>
-                                <p class="project-desc">
-                                    The Resurg project is a clean, responsive website I designed and developed to
-                                    showcase the team’s expertise and services, creating a credible digital presence
-                                    that builds trust and supports collaborations.
-                                </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal3">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-5">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal5" style="cursor: pointer;">
-                                <img src="assets/img/portfolio/employeetrackingfinal.webp" alt="Employee Tracking App" class="responsive-media" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="project-text">
-                                <h3 class="project-title">Employee Tracking App Prototype</h3>
-                                <p class="project-desc">
-                                    A prototype of an app to track the punctuality and presence of employees.
-                                </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal5">View Prototype</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-5 flex-md-row-reverse">
-                        <div class="col-md-6 mb-4 mb-md-0">
-                            <div class="project-img" data-bs-toggle="modal" data-bs-target="#portfolioModal6" style="cursor: pointer;">
-                                <img src="assets/img/portfolio/talentlearning/TnL1.png" alt="Talent Learning App" class="responsive-media" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="project-text">
-                                <h3 class="project-title">Audio Transcription Web App</h3>
-                                <p class="project-desc">
-                                    UI design for an audio transcription web app — featuring a clean login page and a
-                                    user-friendly home interface.
-                                </p>
-                                <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#portfolioModal6">View Design</a>
+                                <a href="projects/innersync.html" class="btn btn-outline-primary">View Case Study</a>
                             </div>
                         </div>
                     </div>
@@ -228,273 +192,10 @@
         <div class="container"><small>Copyright &copy; Kiran George</small></div>
     </div>
 
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">E-commerce Website</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/henzoslide.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/henzoslide2.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/henzoslide3.webp" alt="..." loading="lazy" />
-                                <p class="mb-4">Take a look at how we transformed Henzocare’s online store into a clean, user-friendly shopping experience.</p>
-                                <a href="https://henzocare.com/" target="_blank" class="btn btn-primary">
-                                    Live Website <i class="fa fa-external-link" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Innersync</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/1.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/2.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/3.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/4.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/5.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/6.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/7.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/8.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/9.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/10.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/11.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/innersync/12.webp" alt="..." loading="lazy" />
-                                
-                                <iframe class="figma-embed" src="https://embed.figma.com/proto/aigbSe1OCe2UzkYtJjpbNs/Envisioning?page-id=0%3A1&node-id=410-384&p=f&viewport=150%2C-50%2C0.07&scaling=scale-down&content-scaling=fixed&embed-host=share" allowfullscreen loading="lazy"></iframe>
-                                <p class="mb-4 mt-3">Expand the prototype section for a full screen mode</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Resurg.in</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/resurgslide1.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/resurgslide2.webp" alt="..." loading="lazy" />
-                                <p class="mb-4">Take a look at the website I designed for the Resurg team.</p>
-                                <a href="https://resurg.in/" target="_blank" class="btn btn-primary">
-                                    Live Website <i class="fa fa-external-link" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Case Study</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/sociout/Frame 8.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/sociout/Frame 9.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/sociout/Frame 10.webp" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/sociout/Frame 11.webp" alt="..." loading="lazy" />
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Employee Tracking</h2>
-                                <iframe class="figma-embed" src="https://embed.figma.com/proto/HHaJqUkQH4Ar4PK0pg7nPU/Employee-trackin-app?page-id=0%3A1&node-id=1-2&p=f&viewport=400%2C389%2C0.41&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2&embed-host=share" allowfullscreen loading="lazy"></iframe>
-                                <p class="mb-4 mt-3">This app makes tracking attendance and staying connected at work easy. Employees can check in, request time off, and chat with colleagues-helping everything run smoothly and efficiently.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Web App Design</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/talentlearning/TnL1.png" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/talentlearning/TnL2.png" alt="..." loading="lazy" />
-                                <p class="mb-4">UI design for an audio transcription web app — featuring a clean login page and a user-friendly home interface.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" aria-labelledby="portfolioModal7" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Submarine</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/photography/athirappallymodal.webp" alt="..." loading="lazy" />
-                                <p class="mb-4">Captured the breathtaking beauty of Athirappally Waterfalls in Kerala, perfectly framed by nature itself.</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" aria-labelledby="portfolioModal8" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Submarine</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/photography/berlinmodal.webp" alt="..." loading="lazy" />
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" aria-labelledby="portfolioModal9" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Altiar Jewels</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/photography/altiar.webp" alt="..." loading="lazy" />
-                                <p class="mb-4">Product photography for Altiar Jewels</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" aria-labelledby="portfolioModal10" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Altiar Jewels</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/photography/altiarmodel.jpeg" alt="..." loading="lazy" />
-                                <p class="mb-4">Product photography and graphic design for Altiar Jewels</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" aria-labelledby="portfolioModal11" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                <div class="modal-body text-center pb-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <h2 class="portfolio-modal-title text-secondary mb-5">Theyyam Illustrations</h2>
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/theyyam/Theyyam.jpg" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/theyyam/theyyam-2.png" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/theyyam/theyyam2.png" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/theyyam/theyyameyes.png" alt="..." loading="lazy" />
-                                <img class="img-fluidmodal rounded mb-5" src="assets/img/portfolio/theyyam/thyam3.png" alt="..." loading="lazy" />
-                                <p class="mb-4">Theyyam Illustrations</p>
-                                <button class="btn btn-primary" data-bs-dismiss="modal">
-                                    <i class="fas fa-xmark fa-fw"></i> Close Window
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
-    <script src="js/animatedme.js"></script>
+    <script src="js/space.js?v=3"></script>
+    <script src="js/dc-frame.js?v=3"></script>
     <script>
         // Smooth scroll to the top when clicking the button
         document.querySelector('#backToTop')?.addEventListener('click', function (e) {

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Display and language</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 22px 18px 24px; background: {{bg}}; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: {{text}}; display: flex; flex-direction: column; gap: 14px; overflow: hidden; transition: background 0.3s ease">
+
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="e1-account.html" aria-label="Back to Account" style="width: 44px; height: 44px; border-radius: 999px; background: {{raised}}; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{text}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="flex: 1; font-size: 17px; font-weight: 800">Display &amp; language</span>
+</div>
+
+<span style="font-size: 13px; font-weight: 700; color: {{muted}}; margin-top: 4px">Theme</span>
+<div role="radiogroup" aria-label="Theme" style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: {{card}}">
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{t.checked}}" onClick="{{t.pick}}" style="display: flex; align-items: center; gap: 12px; min-height: 58px; border: none; background: transparent; color: {{text}}; font-family: 'Plus Jakarta Sans', sans-serif; text-align: left"><span style="width: 20px; height: 20px; border-radius: 999px; border: {{t.ring}}; box-sizing: border-box; flex: none"></span><span style="display: flex; flex-direction: column; flex: 1"><span style="font-size: 15px; font-weight: 700">{{t.label}}</span><span style="font-size: 12px; color: {{muted}}">{{t.sub}}</span></span></button>
+</sc-for>
+</div>
+
+<span style="font-size: 13px; font-weight: 700; color: {{muted}}; margin-top: 4px">Text size</span>
+<div role="radiogroup" aria-label="Text size" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 999px; background: {{card}}">
+<button type="button" role="radio" aria-checked="{{isDefault}}" onClick="{{pickDefault}}" style="min-height: 44px; border: none; border-radius: 999px; background: {{bgDefault}}; color: {{text}}; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">Default</button>
+<button type="button" role="radio" aria-checked="{{isLarge}}" onClick="{{pickLarge}}" style="min-height: 44px; border: none; border-radius: 999px; background: {{bgLarge}}; color: {{text}}; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700">Large</button>
+</div>
+
+<span style="font-size: 13px; font-weight: 700; color: {{muted}}; margin-top: 4px">Language</span>
+<div style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: {{card}}">
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 54px; border-bottom: 1px solid {{line}}; font-size: 15px; font-weight: 700">English<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-label="selected"><path d="M5 12l5 5 9-10"></path></svg></div>
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 54px; border-bottom: 1px solid {{line}}; font-size: 15px; font-weight: 700; color: {{muted}}">हिन्दी · Hindi<span style="font-size: 12px; font-weight: 700">Coming soon</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; min-height: 54px; font-size: 15px; font-weight: 700; color: {{muted}}">मराठी · Marathi<span style="font-size: 12px; font-weight: 700">Coming soon</span></div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const theme = s.theme || 'phone';
+const size = s.size || 'default';
+const light = theme === 'light';
+const t = light
+? { bg: '#F6F7F9', card: '#FFFFFF', raised: '#EEF0F3', text: '#0F1115', muted: '#5A6170', line: '#E2E5EA', accent: '#7C5CFA' }
+: { bg: '#0B0D10', card: '#171A1F', raised: '#22262D', text: '#F3F5F8', muted: '#A1A9B5', line: '#22262D', accent: '#A78BFA' };
+const opts = [['phone', 'Follow my phone', 'Switches with your phone’s setting'], ['dark', 'Dark', 'Midnight · easier at night'], ['light', 'Light', 'Clearer in bright sunlight']];
+return Object.assign({}, t, {
+themes: opts.map(o => ({ label: o[1], sub: o[2], checked: o[0] === theme ? 'true' : 'false', ring: o[0] === theme ? '6px solid ' + t.accent : '2px solid ' + (light ? '#C5CAD3' : '#3A3F48'), pick: () => this.setState({ theme: o[0] }) })),
+isDefault: size === 'default' ? 'true' : 'false', isLarge: size === 'large' ? 'true' : 'false',
+bgDefault: size === 'default' ? t.raised : 'transparent', bgLarge: size === 'large' ? t.raised : 'transparent',
+pickDefault: () => this.setState({ size: 'default' }),
+pickLarge: () => this.setState({ size: 'large' })
+});
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

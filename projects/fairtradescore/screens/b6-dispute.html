@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dispute a payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#C4B5FD}a:hover{color:#DDD6FE}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 22px 18px 24px; background: #0B0D10; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #F3F5F8; display: flex; flex-direction: column; gap: 14px; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 12px">
+<a href="b2-factor.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 999px; background: #22262D; display: flex; align-items: center; justify-content: center; flex: none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F3F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<span style="flex: 1; font-size: 17px; font-weight: 800">Dispute a payment</span>
+</div>
+
+<sc-if value="{{editing}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 13px; font-weight: 700; color: #A1A9B5">Which payment?</span>
+<div role="radiogroup" aria-label="Payment" style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: #171A1F">
+<sc-for list="{{payments}}" as="p" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{p.checked}}" onClick="{{p.pick}}" style="display: flex; align-items: center; gap: 12px; min-height: 56px; border: none; background: transparent; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; text-align: left"><span style="width: 20px; height: 20px; border-radius: 999px; border: {{p.ring}}; box-sizing: border-box; flex: none"></span><span style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">{{p.name}}</span><span style="font-size: 12px; color: #A1A9B5">{{p.sub}}</span></span></button>
+</sc-for>
+</div>
+<span style="font-size: 13px; font-weight: 700; color: #A1A9B5">What’s wrong?</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px" role="radiogroup" aria-label="Reason">
+<sc-for list="{{reasons}}" as="r" hint-placeholder-count="3">
+<button type="button" role="radio" aria-checked="{{r.checked}}" onClick="{{r.pick}}" style="min-height: 40px; padding: 0 14px; border-radius: 999px; border: {{r.border}}; background: {{r.bg}}; color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700">{{r.label}}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{attach}}" style="display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 16px; border-radius: 16px; border: 1.5px dashed rgba(167,139,250,0.5); background: rgba(167,139,250,0.06); color: #F3F5F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; text-align: left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12l-8.5 8.5a5 5 0 0 1-7-7L14 5a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 8"></path></svg>{{attachLabel}}</button>
+</div>
+<button type="button" onClick="{{submit}}" style="margin-top: auto; min-height: 56px; border: none; border-radius: 999px; background: #A78BFA; box-shadow: 0 8px 28px rgba(167,139,250,0.35); color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Send dispute</button>
+</sc-if>
+
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 0 10px">
+<span style="width: 72px; height: 72px; border-radius: 999px; background: rgba(45,212,191,0.16); display: flex; align-items: center; justify-content: center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+<span style="font-size: 24px; font-weight: 800">Dispute sent</span>
+<span style="font-size: 14px; line-height: 1.55; color: #A1A9B5">We’ve asked {{chosenName}} to check this payment. You’ll hear back within 7 days. Until then it’s marked “under review” on your report.</span>
+</div>
+<a href="b2-factor.html" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 999px; background: #22262D; border: 1px solid rgba(255,255,255,0.08); color: #F3F5F8; font-size: 16px; font-weight: 700; text-decoration: none">Back to payment behaviour</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const pay = s.pay || 'mw';
+const reason = s.reason || 'ontime';
+const list = [
+{ id: 'mw', name: 'Mehta Wholesale', sub: '21 Oct · ₹9,300 · marked 9 days late' },
+{ id: 'st', name: 'Shree Traders', sub: '18 Nov · ₹18,400 · on time' },
+{ id: 'rd', name: 'Ravi Distributors', sub: '02 Nov · ₹42,750 · 2 days early' }
+];
+const rs = [['ontime', 'I paid on time'], ['amount', 'Amount is wrong'], ['notmine', 'Not my payment']];
+return {
+editing: !s.done, done: !!s.done,
+payments: list.map(p => ({ name: p.name, sub: p.sub, checked: p.id === pay ? 'true' : 'false', ring: p.id === pay ? '6px solid #A78BFA' : '2px solid #3A3F48', pick: () => this.setState({ pay: p.id }) })),
+reasons: rs.map(r => ({ label: r[1], checked: r[0] === reason ? 'true' : 'false', bg: r[0] === reason ? 'rgba(167,139,250,0.18)' : '#22262D', border: r[0] === reason ? '1px solid #A78BFA' : '1px solid rgba(255,255,255,0.08)', pick: () => this.setState({ reason: r[0] }) })),
+attachLabel: s.attached ? 'UPI receipt 21-Oct.jpg attached ✓' : 'Attach proof (UPI receipt, bank slip)',
+attach: () => this.setState({ attached: true }),
+chosenName: list.find(p => p.id === pay).name,
+submit: () => this.setState({ done: true })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

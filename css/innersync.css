@@ -1,0 +1,948 @@
+/* ============================================= */
+/* Innersync case study                          */
+/* Builds on case-study.css; is- = Innersync     */
+/* ============================================= */
+
+/* Project palette, taken from the slides and app screens.
+   Overrides the shared ae- tokens so the shared layout picks it up. */
+.cs-innersync {
+  --ae-night: #131218;
+  --ae-plum: #2a2340;
+  --ae-violet: #1f6aa5;      /* accent on light backgrounds (kickers, borders) */
+  --ae-glow: #8fd0ff;        /* accent on dark backgrounds */
+  --ae-text: #e6e8f0;
+  --ae-text-muted: #a9adbd;
+
+  --is-surface: #19181e;     /* slide background */
+  --is-card: #24232b;
+  --is-line: rgba(143, 208, 255, 0.18);
+
+  /* status (fixed, always shown with an icon + label) */
+  --is-good: #0ca30c;
+  --is-warning: #fab219;
+  --is-critical: #d03b3b;
+}
+
+/* ---------- Hero ---------- */
+.cs-innersync .ae-hero {
+  background:
+    radial-gradient(50rem 36rem at 78% 40%, rgba(59, 111, 168, 0.35), transparent 70%),
+    linear-gradient(160deg, var(--ae-plum) 0%, var(--ae-night) 60%);
+}
+
+.is-hero-media {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--is-line);
+  box-shadow: 0 0 80px rgba(59, 111, 168, 0.35);
+  background: var(--is-surface);
+}
+
+.is-hero-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ---------- Shared bits ---------- */
+.is-split {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 62rem) {
+  .is-split {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+  }
+
+  .is-split--reverse {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.is-note {
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ae-text-muted);
+}
+
+.is-note--dark {
+  color: var(--cs-muted);
+}
+
+/* ---------- Problem ---------- */
+.is-stat {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.is-stat__num {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  line-height: 1;
+  color: var(--cs-ink);
+}
+
+.is-stat__label {
+  font-size: 1.15rem;
+  color: var(--cs-ink);
+  max-width: 20rem;
+}
+
+.is-roots {
+  margin: 0;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--is-surface);
+}
+
+.is-roots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+.is-roots figcaption {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--ae-text-muted);
+}
+
+/* ---------- Idea ---------- */
+.cs-innersync .ae-section--dark {
+  background: linear-gradient(180deg, var(--ae-night) 0%, var(--ae-plum) 100%);
+}
+
+.is-quote {
+  margin: 2.5rem 0 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--ae-glow);
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #fff;
+}
+
+/* ---------- Data flow ---------- */
+.is-flow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.is-flow__col {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.is-node {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  box-shadow: var(--cs-shadow);
+}
+
+.is-node > svg,
+.is-node > i {
+  flex: none;
+  width: 1.4rem;
+  font-size: 1.25rem;
+  color: var(--ae-violet);
+}
+
+.is-node strong {
+  display: block;
+  color: var(--cs-ink);
+}
+
+.is-node span {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.is-node--out {
+  border-left: 4px solid var(--ae-violet);
+}
+
+.is-flow__arrow {
+  justify-self: center;
+  color: var(--ae-violet);
+  font-size: 1.4rem;
+  transform: rotate(90deg);
+}
+
+.is-flow__core {
+  position: relative;
+  justify-self: center;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  width: 11rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2c4f78 0%, var(--ae-night) 75%);
+  color: var(--ae-text);
+}
+
+.is-flow__core strong {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.is-flow__core span {
+  font-size: 0.85rem;
+  color: var(--ae-text-muted);
+}
+
+.is-flow__core-ring {
+  position: absolute;
+  inset: -0.6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(31, 106, 165, 0.45);
+  animation: is-pulse 3s ease-out infinite;
+}
+
+@keyframes is-pulse {
+  0% { transform: scale(0.94); opacity: 1; }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+
+@media (min-width: 62rem) {
+  .is-flow {
+    grid-template-columns: 1fr auto auto auto 1fr;
+    gap: 1.5rem;
+  }
+
+  .is-flow__arrow {
+    transform: none;
+  }
+}
+
+/* ---------- Body map (the data mirror) ---------- */
+.is-section--night {
+  background: radial-gradient(50rem 40rem at 30% 50%, rgba(42, 35, 64, 0.9), var(--ae-night) 70%);
+  color: var(--ae-text);
+}
+
+.case-study .is-section--night .ae-h2,
+.case-study .is-section--night h3 {
+  color: #fff;
+}
+
+.is-mirror {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 62rem) {
+  .is-mirror {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+/* the stage looks like the app's home screen: plum glow at the top, black below */
+.is-mirror__stage {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(70% 45% at 20% 0%, rgba(122, 86, 140, 0.55), transparent 70%),
+    radial-gradient(60% 40% at 85% 100%, rgba(84, 72, 150, 0.45), transparent 70%),
+    linear-gradient(180deg, #2a1f33 0%, #050407 45%, #0a0910 75%, #1c1830 100%);
+  overflow: hidden;
+}
+
+.is-scenarios {
+  display: inline-flex;
+  padding: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--is-line);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.is-scenarios button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--ae-text-muted);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.is-scenarios button[aria-checked="true"] {
+  background: var(--ae-glow);
+  color: var(--ae-night);
+}
+
+.is-scenarios button:focus-visible,
+.is-tabs button:focus-visible,
+.is-dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ---- The figure ----
+   One coordinate box, 774 x 630 units: the 474 x 961 body render sits in the
+   middle (x 150 to 624) with room either side for leader lines and dots.
+   Only the top 630 px of the render show (head to mid-thigh); the rest
+   is cropped and the legs fade out, like the prototype's organ screens.
+   If the render changes size, update these numbers and the ones at the top
+   of the body map code in js/innersync.js. */
+.is-figure {
+  position: relative;
+  width: min(34rem, 100%);
+  aspect-ratio: 774 / 630;
+}
+
+.is-figure__art {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19.38%;   /* 150 / 774 */
+  width: 61.24%;  /* 474 / 774 */
+  overflow: hidden;
+  isolation: isolate; /* tints blend with the body only */
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, rgba(0, 0, 0, 0.35) 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 62%, rgba(0, 0, 0, 0.35) 84%, transparent 100%);
+}
+
+/* full-height render inside the cropped window */
+.is-figure__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 152.54%; /* 961 / 630 */
+}
+
+.is-figure__body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 22px rgba(90, 160, 255, 0.28));
+}
+
+/* No transform, opacity or mask here: anything that isolates this layer
+   would stop the tints from blending with the body image underneath. */
+.is-figure__tints {
+  position: absolute;
+  inset: 0;
+}
+
+/* Each organ gets two soft patches laid over the render:
+   - .is-tint  uses "color" blending: keeps the organ's shading, swaps its hue for the status colour
+   - .is-glow  uses "screen" blending: a gentle light, like the glowing organs in the prototype
+   Both are masked to the body's shape (set in JS) so nothing spills outside the figure. */
+.is-tint,
+.is-glow {
+  --c: var(--is-good);
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.is-tint {
+  background: radial-gradient(closest-side, var(--c) 25%, transparent 100%);
+  mix-blend-mode: color;
+  opacity: 0.9;
+}
+
+.is-glow {
+  background: radial-gradient(closest-side, var(--c), transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0.2;
+  transition: opacity 0.4s ease;
+}
+
+.is-tint[data-status="warning"],
+.is-glow[data-status="warning"] { --c: var(--is-warning); }
+
+.is-tint[data-status="critical"],
+.is-glow[data-status="critical"] { --c: var(--is-critical); }
+
+.is-glow.is-selected { opacity: 0.45; }
+
+.is-glow[data-status="critical"] {
+  animation: is-beat 1.6s ease-in-out infinite;
+}
+
+@keyframes is-beat {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* leader lines from each organ to its dot */
+.is-figure__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.is-figure__lines line {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.3s ease;
+}
+
+.is-figure__lines line.is-selected {
+  stroke: rgba(255, 255, 255, 0.9);
+}
+
+.is-figure__lines circle {
+  fill: #fff;
+}
+
+.is-figure__dots {
+  position: absolute;
+  inset: 0;
+}
+
+/* white glowing dots like the prototype; a 44px hit target around a small dot */
+.is-dot {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: -1.375rem 0 0 -1.375rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.is-dot::before,
+.is-dot::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  border-radius: 50%;
+}
+
+.is-dot::before {
+  margin: -0.4rem;
+  background: #fff;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.55);
+  transition: margin 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* soft halo, like the larger translucent circles in the prototype */
+.is-dot::after {
+  margin: -1rem;
+  background: rgba(255, 255, 255, 0.12);
+  animation: is-halo 2.6s ease-in-out infinite;
+}
+
+.is-dot[aria-pressed="true"]::before {
+  margin: -0.55rem;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 0 16px 4px rgba(255, 255, 255, 0.7);
+}
+
+.is-dot[aria-pressed="true"]::after {
+  margin: -1.35rem;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@keyframes is-halo {
+  0%, 100% { transform: scale(0.85); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* floating glass message next to the selected dot (desktop) */
+.is-float {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  max-width: 13rem;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(40, 34, 56, 0.55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+/* sits beside its dot, pointing in toward the body, so it never covers another dot */
+.is-float[data-side="right"] { transform: translate(calc(-100% - 1.6rem), -50%); }
+.is-float[data-side="left"] { transform: translate(1.6rem, -50%); }
+
+@media (max-width: 47.99rem) {
+  .is-float { display: none; }
+}
+
+.is-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.is-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.is-chip {
+  display: inline-grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: var(--ae-night);
+}
+
+.is-chip--good { background: var(--is-good); }
+.is-chip--warning { background: var(--is-warning); }
+.is-chip--critical { background: var(--is-critical); color: #fff; }
+
+/* detail panel: frosted glass, like the organ cards in the prototype */
+.is-panel {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(30, 26, 44, 0.6);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* small two-line trend inside the panel (like Stress / Sleep in the prototype) */
+.is-wave {
+  margin: 0 0 1.5rem;
+}
+
+.is-wave__legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--ae-text-muted);
+}
+
+.is-wave__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.is-wave__legend i {
+  display: inline-block;
+  width: 1.4rem;
+  border-top: 2px solid #4f8dff;
+}
+
+.is-wave__legend i.is-dashed {
+  border-top-style: dashed;
+  border-top-color: #9cc0ff;
+}
+
+.is-wave svg {
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+}
+
+.is-wave path {
+  fill: none;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.is-wave .area {
+  fill: url(#isWaveFill);
+  stroke: none;
+}
+
+.is-panel__organ {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ae-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.is-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.case-study .is-panel h3 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+}
+
+.is-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.is-metrics div {
+  padding: 0.9rem 1rem;
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.is-metrics dt {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--ae-text-muted);
+}
+
+.is-metrics dd {
+  margin: 0.2rem 0 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.is-tip {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--is-line);
+  color: var(--ae-text);
+}
+
+.is-tip > svg,
+.is-tip > i {
+  flex: none;
+  margin-top: 0.3rem;
+  color: var(--ae-glow);
+}
+
+/* ---------- Trend chart ---------- */
+.is-trend {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--is-surface);
+  color: var(--ae-text);
+}
+
+@media (min-width: 48rem) {
+  .is-trend {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.is-trend__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.case-study .is-trend__title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.is-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.is-tabs button {
+  border: 1px solid var(--is-line);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  color: var(--ae-text-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.is-tabs button[aria-selected="true"] {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ae-night);
+}
+
+.is-trend__summary {
+  margin: 0.75rem 0 0;
+  color: var(--ae-text-muted);
+  font-size: 0.95rem;
+}
+
+.is-trend__chart {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.is-trend__chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.is-trend__chart .grid line {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.is-trend__chart .axis text {
+  fill: var(--ae-text-muted);
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+}
+
+.is-trend__chart .band {
+  fill: rgba(12, 163, 12, 0.1);
+}
+
+.is-trend__chart .band-label {
+  fill: #7fd17f;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+}
+
+.is-trend__chart .line {
+  fill: none;
+  stroke: var(--ae-glow);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.is-trend__chart .event line {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-dasharray: 3 4;
+}
+
+.is-trend__chart .event text {
+  fill: #fff;
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+}
+
+.is-trend__chart .pt {
+  stroke: var(--is-surface);
+  stroke-width: 2;
+  transition: r 0.15s ease;
+}
+
+.is-trend__chart .pt.is-active {
+  r: 8;
+}
+
+.is-trend__chart .crosshair {
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.is-trend__chart .hit {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.is-tooltip {
+  position: absolute;
+  pointer-events: none;
+  min-width: 9rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--cs-ink);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, calc(-100% - 14px));
+}
+
+.is-tooltip strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.is-tooltip .is-chip {
+  width: 1.1rem;
+  height: 1.1rem;
+  font-size: 0.65rem;
+  margin-right: 0.3rem;
+  vertical-align: -0.15rem;
+}
+
+.is-table {
+  margin-top: 1rem;
+}
+
+.is-table summary {
+  cursor: pointer;
+  color: var(--ae-glow);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.is-table__wrap {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.is-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: var(--ae-text);
+}
+
+.is-table th,
+.is-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.is-table th {
+  color: var(--ae-text-muted);
+  font-weight: 700;
+}
+
+/* ---------- Nudges ---------- */
+.is-nudges {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.is-nudges li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--cs-line);
+  box-shadow: var(--cs-shadow);
+}
+
+.is-nudges li > svg,
+.is-nudges li > i {
+  flex: none;
+  width: 1.3rem;
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+  color: var(--ae-violet);
+}
+
+.is-nudges strong {
+  display: block;
+  color: var(--cs-ink);
+}
+
+.is-nudges span {
+  display: block;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ---------- Screens ---------- */
+.is-screen-dark img {
+  background: var(--is-surface);
+}
+
+.is-gallery {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 48rem) {
+  .is-gallery {
+    grid-template-columns: 1fr 1.6fr;
+  }
+
+  .is-gallery figure:last-child {
+    grid-column: 1 / -1;
+    max-width: 32rem;
+    justify-self: center;
+  }
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .is-flow__core-ring,
+  .is-dot::after,
+  .is-glow[data-status="critical"] {
+    animation: none;
+  }
+
+  .is-dot::before,
+  .is-glow,
+  .is-trend__chart .pt {
+    transition: none;
+  }
+}

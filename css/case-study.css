@@ -1,0 +1,506 @@
+/* ============================================= */
+/* Case study pages (shared template)            */
+/* Prefix ae- = Algorithmic Eclipse styles       */
+/* ============================================= */
+
+.case-study {
+  --cs-ink: #212529;
+  --cs-muted: #4a5568;
+  --cs-soft: #f4f4f4;
+  --cs-line: rgba(0, 0, 0, 0.08);
+  --cs-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+
+  /* project palette, taken from the prototype */
+  --ae-night: #0c0a14;
+  --ae-plum: #24133a;
+  --ae-violet: #7b3fb0;
+  --ae-glow: #f4cbff;
+  --ae-text: #ece6f5;
+  --ae-text-muted: #b9afcb;
+
+  color: var(--cs-muted);
+  background: #fff;
+}
+
+.case-study h1,
+.case-study h2,
+.case-study h3 {
+  font-family: "Montserrat", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 700;
+  color: var(--cs-ink);
+  text-transform: none;
+}
+
+.case-study p {
+  line-height: 1.7;
+}
+
+/* ---------- Layout helpers ---------- */
+.ae-section {
+  padding: clamp(4rem, 9vw, 7rem) 0;
+}
+
+.ae-section--soft {
+  background: var(--cs-soft);
+}
+
+.ae-narrow {
+  max-width: 46rem;
+}
+
+.ae-narrow:not(.ae-narrow--left) {
+  margin-inline: auto;
+}
+
+.ae-kicker {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ae-violet);
+  margin-bottom: 0.75rem;
+}
+
+.ae-kicker--light {
+  color: var(--ae-glow);
+}
+
+.ae-h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.ae-callout {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--ae-violet);
+  background: var(--cs-soft);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--cs-ink);
+}
+
+/* ---------- Hero ---------- */
+.ae-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(8rem, 14vw, 10rem) 0 3rem;
+  color: var(--ae-text);
+  background:
+    radial-gradient(60rem 40rem at 75% 35%, rgba(123, 63, 176, 0.35), transparent 70%),
+    linear-gradient(160deg, var(--ae-plum) 0%, var(--ae-night) 65%);
+}
+
+.ae-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ae-eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ae-glow);
+  margin-bottom: 1rem;
+}
+
+.case-study .ae-hero__title {
+  color: #fff;
+  font-size: clamp(2.6rem, 7vw, 4.75rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.ae-hero__lede {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--ae-text);
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.ae-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ae-btn-light {
+  background: #fff;
+  color: var(--ae-night);
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 0.7rem 1.6rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ae-btn-light:hover,
+.ae-btn-light:focus-visible {
+  background: #fff;
+  color: var(--ae-night);
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(244, 203, 255, 0.45);
+}
+
+.ae-link-light {
+  color: var(--ae-text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.ae-link-light:hover,
+.ae-link-light:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.ae-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+  margin: 4rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ae-meta dt {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ae-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.ae-meta dd {
+  margin: 0;
+  color: #fff;
+  line-height: 1.5;
+}
+
+@media (min-width: 62rem) {
+  .ae-hero__inner {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .ae-meta {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- The eclipse (pure CSS) ---------- */
+/* --offset: how far the dark disc has moved off the light, in % of its width */
+.ae-eclipse {
+  --offset: 6;
+  position: relative;
+  width: min(22rem, 68vw);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.ae-eclipse__light {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #fbe6ff 30%, #e3a4ff 60%, #a54ad8 100%);
+  box-shadow:
+    0 0 30px 6px rgba(244, 203, 255, 0.7),
+    0 0 90px 24px rgba(200, 107, 255, 0.4),
+    0 0 180px 60px rgba(123, 63, 176, 0.25);
+}
+
+.ae-eclipse__disc {
+  position: absolute;
+  inset: -1.5%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 28% 50%, #4a2766 0%, #1a0e26 45%, #050308 100%);
+  transform: translateX(calc(var(--offset) * 1%));
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+/* the hero disc follows the scroll directly */
+.ae-eclipse--hero .ae-eclipse__disc {
+  transition: none;
+}
+
+/* ---------- The idea + live demo ---------- */
+.ae-section--dark {
+  color: var(--ae-text);
+  background: linear-gradient(180deg, var(--ae-night) 0%, var(--ae-plum) 100%);
+}
+
+.case-study .ae-section--dark .ae-h2 {
+  color: #fff;
+}
+
+.ae-idea {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.ae-hint {
+  color: var(--ae-glow);
+  font-weight: 700;
+}
+
+.ae-demo {
+  padding: 2.5rem 1.5rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.ae-eclipse--demo {
+  width: min(13rem, 55vw);
+  margin-bottom: 2.75rem;
+}
+
+.ae-scores {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.ae-score {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.6rem;
+}
+
+.ae-score label {
+  color: var(--ae-text);
+  margin: 0;
+}
+
+.ae-score output {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ae-score input[type="range"] {
+  --val: 50%;
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 0.6rem;
+  margin: 0.25rem 0;
+  border-radius: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(to right, var(--ae-glow) var(--val), rgba(255, 255, 255, 0.18) var(--val));
+  cursor: pointer;
+}
+
+.ae-score input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--ae-violet);
+}
+
+.ae-score input[type="range"]::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--ae-violet);
+}
+
+.ae-score input[type="range"]:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.ae-demo__status {
+  min-height: 1.7em;
+  margin: 1.25rem 0 0;
+  text-align: center;
+  color: var(--ae-text-muted);
+}
+
+@media (min-width: 62rem) {
+  .ae-idea {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+}
+
+/* ---------- Design decisions ---------- */
+.ae-decisions {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ae-decision {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.ae-decision__heard,
+.ae-decision__made {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.ae-decision__heard {
+  background: var(--cs-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ae-decision__made {
+  border: 1px solid var(--cs-line);
+  box-shadow: var(--cs-shadow);
+  background: #fff;
+}
+
+.ae-decision h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.ae-decision__made h3 {
+  margin-bottom: 0.5rem;
+}
+
+.ae-decision__made p {
+  margin: 0;
+}
+
+.ae-label {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ae-violet);
+  margin-bottom: 0.5rem;
+}
+
+.ae-decision__arrow {
+  justify-self: center;
+  align-self: center;
+  color: var(--ae-violet);
+  transform: rotate(90deg);
+}
+
+@media (min-width: 48rem) {
+  .ae-decision {
+    grid-template-columns: 1fr auto 1.4fr;
+    gap: 1.5rem;
+  }
+
+  .ae-decision__arrow {
+    transform: none;
+  }
+}
+
+/* ---------- Screens ---------- */
+.ae-screens {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.ae-screen {
+  margin: 0;
+}
+
+.ae-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(12, 10, 20, 0.18);
+  background: var(--ae-night);
+}
+
+.ae-screen figcaption {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ae-screen figcaption strong {
+  color: var(--cs-ink);
+}
+
+.ae-screens__side {
+  display: grid;
+  gap: 2.5rem;
+  align-content: start;
+}
+
+@media (min-width: 62rem) {
+  .ae-screens {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ---------- Prototype ---------- */
+.ae-embed {
+  margin-top: 1.5rem;
+  background: var(--ae-night);
+}
+
+.ae-embed-note {
+  margin-top: 1rem;
+}
+
+.ae-embed-note a {
+  color: var(--ae-violet);
+  font-weight: 700;
+}
+
+/* ---------- What's next ---------- */
+.ae-list {
+  padding-left: 1.2rem;
+  margin: 1.5rem 0 0;
+}
+
+.ae-list li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.ae-list strong {
+  color: var(--cs-ink);
+}
+
+.ae-back {
+  padding: 3rem 0 4rem;
+  text-align: center;
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ae-eclipse__disc,
+  .ae-btn-light {
+    transition: none;
+  }
+}

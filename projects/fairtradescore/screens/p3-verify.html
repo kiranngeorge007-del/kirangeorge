@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify a past credit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"><style>html,body{margin:0}x-dc{display:block}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6247D9}a:hover{color:#4C35B5}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 18px 18px 20px; background: #F6F7F9; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0F1115; display: flex; flex-direction: column; gap: 14px; overflow: hidden; font-variant-numeric: tabular-nums">
+
+<div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: #EEF0F3; font-size: 12px; font-weight: 600; color: #5A6170">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+<span style="flex: 1">verify.fairtradescore.in</span><span style="font-weight: 700; color: #0F766E">Secure</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 34px; height: 34px; border-radius: 11px; background: #0F1115; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"></path><path d="M12 16l4-5"></path></svg></span>
+<span style="font-size: 15px; font-weight: 800">FairTradeScore</span>
+<span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #5A6170">For Shree Traders</span>
+</div>
+
+<sc-if value="{{reviewing}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 14px; flex: 1">
+<span style="font-size: 23px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em">Suresh General Store asked you to confirm a past credit</span>
+<section style="display: flex; flex-direction: column; padding: 4px 16px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E5EA; box-shadow: 0 2px 8px rgba(15,17,21,0.06); font-size: 14px">
+<div style="display: flex; justify-content: space-between; min-height: 46px; align-items: center; border-bottom: 1px solid #EEF0F3"><span style="color: #5A6170">Amount</span><b style="font-size: 18px">₹24,000</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-bottom: 1px solid #EEF0F3"><span style="color: #5A6170">Credit given</span><b>15 Aug 2026</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center; border-bottom: 1px solid #EEF0F3"><span style="color: #5A6170">Due</span><b>14 Sep 2026</b></div>
+<div style="display: flex; justify-content: space-between; min-height: 44px; align-items: center"><span style="color: #5A6170">Paid</span><b>12 Sep 2026</b></div>
+</section>
+<div style="display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 16px; background: #E6F4F1; font-size: 13px; line-height: 1.45; font-weight: 600; color: #0F3D38"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M5 12l5 5 9-10"></path></svg>Their bank shows a ₹24,000 UPI payment to Shree Traders on 12 Sep</div>
+<button type="button" onClick="{{viewBill}}" style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; border-radius: 14px; border: 1px solid #E2E5EA; background: #FFFFFF; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; text-align: left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="11" r="2"></circle><path d="M21 17l-5-5-9 7"></path></svg>{{billLabel}}</button>
+<span style="font-size: 12px; line-height: 1.5; color: #5A6170">Your answer goes only to Suresh General Store and is recorded with the date.</span>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+<button type="button" onClick="{{yes}}" style="min-height: 56px; border: none; border-radius: 999px; background: #7C5CFA; color: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Yes, this is correct</button>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{edit}}" style="min-height: 48px; border-radius: 999px; border: 1px solid #E2E5EA; background: #FFFFFF; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">Correct it</button>
+<button type="button" onClick="{{decline}}" style="min-height: 48px; border-radius: 999px; border: 1px solid #F3C2CC; background: #FFFFFF; color: #BE123C; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">Not correct</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 12px; flex: 1">
+<span style="font-size: 22px; line-height: 1.25; font-weight: 800">Correct the details</span>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="sv-amt" style="font-size: 12px; font-weight: 600; color: #5A6170">Amount</label><input id="sv-amt" value="₹24,000" style="height: 50px; box-sizing: border-box; padding: 0 14px; border-radius: 12px; background: #FFFFFF; border: 2px solid #7C5CFA; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800"></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="sv-due" style="font-size: 12px; font-weight: 600; color: #5A6170">Due date</label><input id="sv-due" value="14 Sep 2026" style="height: 48px; min-width: 0; box-sizing: border-box; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700"></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><label for="sv-paid" style="font-size: 12px; font-weight: 600; color: #5A6170">Paid on</label><input id="sv-paid" value="12 Sep 2026" style="height: 48px; min-width: 0; box-sizing: border-box; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700"></div>
+</div>
+<span style="font-size: 12px; line-height: 1.5; color: #5A6170">Suresh will be asked to accept your correction before it counts.</span>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+<button type="button" onClick="{{yes}}" style="min-height: 56px; border: none; border-radius: 999px; background: #7C5CFA; color: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Send correction</button>
+<button type="button" onClick="{{back}}" style="min-height: 44px; border: none; background: transparent; color: #0F1115; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700">Back</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{otp}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; flex: 1">
+<span style="font-size: 22px; line-height: 1.25; font-weight: 800">Confirm it’s you</span>
+<span style="font-size: 14px; line-height: 1.5; color: #5A6170">We sent a 6-digit code to the number this link was sent to, ending ••4410.</span>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px" role="group" aria-label="Code"><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800">6</span><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800">0</span><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800">3</span><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800">9</span><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5EA; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 800">1</span><span style="height: 54px; border-radius: 12px; background: #FFFFFF; border: 2px solid #7C5CFA; box-sizing: border-box"></span></div>
+<button type="button" onClick="{{verify}}" style="margin-top: auto; min-height: 56px; border: none; border-radius: 999px; background: #7C5CFA; color: #FFFFFF; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800">Verify</button>
+</div>
+</sc-if>
+
+<sc-if value="{{finished}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 14px; flex: 1">
+<span style="width: 64px; height: 64px; border-radius: 999px; background: {{doneBg}}; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{doneColor}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>
+<span style="font-size: 24px; line-height: 1.2; font-weight: 800">{{doneTitle}}</span>
+<span style="font-size: 14px; line-height: 1.55; color: #5A6170">{{doneBody}}</span>
+<section style="margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 20px; background: #0F1115; color: #F3F5F8">
+<span style="font-size: 16px; font-weight: 800">Give credit with confidence</span>
+<span style="font-size: 13px; line-height: 1.5; color: #A1A9B5">See any retailer’s verified payment record before you extend credit. Free to try for distributors.</span>
+<button type="button" onClick="{{interest}}" style="min-height: 48px; border: none; border-radius: 999px; background: #A78BFA; color: #0B0D10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 800">{{interestLabel}}</button>
+</section>
+<a href="p1-history.html" style="display: flex; align-items: center; justify-content: center; min-height: 40px; font-size: 12px; font-weight: 700; color: #5A6170; text-decoration: none">Prototype: back to Suresh’s credit history</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const step = s.step || 'review';
+const declined = s.outcome === 'declined';
+const corrected = s.outcome === 'corrected';
+return {
+reviewing: step === 'review', editing: step === 'edit', otp: step === 'otp', finished: step === 'done',
+billLabel: s.bill ? 'Bill SR-0815 · 15 Aug · 42 items (photo opened)' : 'View the bill photo Suresh attached',
+viewBill: () => this.setState({ bill: true }),
+yes: () => this.setState({ step: 'otp', outcome: step === 'edit' ? 'corrected' : 'confirmed' }),
+edit: () => this.setState({ step: 'edit' }),
+back: () => this.setState({ step: 'review' }),
+decline: () => this.setState({ step: 'done', outcome: 'declined' }),
+verify: () => this.setState({ step: 'done' }),
+doneBg: declined ? '#FDECEF' : '#E6F4F1',
+doneColor: declined ? '#BE123C' : '#0F766E',
+doneTitle: declined ? 'Marked as not correct' : (corrected ? 'Correction sent' : 'Thank you. It’s verified.'),
+doneBody: declined ? 'Suresh will see that you didn’t recognise this credit. It won’t count toward their score.' : (corrected ? 'Suresh will review your correction. Once they accept it, it counts as verified.' : 'This credit now counts toward Suresh General Store’s trust score as verified by you.'),
+interestLabel: s.interest ? 'We’ll WhatsApp you a link ✓' : 'Try FairTradeScore',
+interest: () => this.setState({ interest: true })
+};
+}
+}
+</script>
+<script src="dc-lite.js?v=4"></script>
+</body>
+</html>

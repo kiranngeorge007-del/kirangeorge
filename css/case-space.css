@@ -1,0 +1,358 @@
+/* ============================================= */
+/* Space theme for the case-study pages          */
+/* Matches the home page (css/space.css): dark   */
+/* throughout, starfield behind (js/space-bg.js),*/
+/* Space Grotesk + JetBrains Mono, glass nav.    */
+/* Each project keeps its own accent colour.     */
+/* Load after case-study.css and the project CSS.*/
+/* ============================================= */
+
+body.case-study.cs-space {
+  --sp-bg: #030305;
+  --sp-text: #ecedf2;
+  --sp-muted: #9b9eb0;
+  --sp-faint: #6c6f80;
+  --sp-line: rgba(255, 255, 255, 0.12);
+  --sp-card: rgba(14, 14, 22, 0.66);
+  --sp-sans: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --sp-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* the shared light-theme tokens, turned dark */
+  --cs-ink: #ffffff;
+  --cs-muted: var(--sp-muted);
+  --cs-soft: rgba(255, 255, 255, 0.04);
+  --cs-line: var(--sp-line);
+  --cs-shadow: none;
+
+  /* accents: the light-background accent becomes the project's glow */
+  --ae-violet: var(--ae-glow);
+  --ae-text-muted: var(--sp-muted);
+
+  background: var(--sp-bg);
+  color: var(--sp-muted);
+  font-family: var(--sp-sans);
+}
+
+/* per-project accent haze behind the hero */
+body.cs-space { --sp-haze: rgba(123, 63, 176, 0.26); }                 /* Algorithmic Eclipse */
+body.cs-space.cs-innersync { --sp-haze: rgba(31, 106, 165, 0.26); }
+body.cs-space.cs-fts { --sp-haze: rgba(167, 139, 250, 0.22); }
+
+/* style.css's overflow-x: hidden on html/body breaks position: sticky; clip doesn't */
+html,
+body.cs-space {
+  overflow-x: clip;
+}
+
+.cs-space ::selection {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+}
+
+#sp-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.cs-space > header,
+.cs-space > main,
+.cs-space > .copyright {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Type ---------- */
+.case-study.cs-space h1,
+.case-study.cs-space h2,
+.case-study.cs-space h3 {
+  font-family: var(--sp-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.case-study.cs-space .ae-hero__title {
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.case-study.cs-space .ae-h2 {
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.cs-space p,
+.cs-space li {
+  line-height: 1.75;
+}
+
+.cs-space .ae-kicker,
+.cs-space .ae-eyebrow,
+.cs-space .ae-label,
+.cs-space .ae-meta dt,
+.cs-space .ft-steps span,
+.cs-space .ft-proto__n {
+  font-family: var(--sp-mono);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.cs-space .ae-kicker,
+.cs-space .ae-kicker--light {
+  font-size: 0.75rem;
+  color: var(--ae-glow);
+}
+
+.cs-space .ae-eyebrow {
+  font-size: 0.78rem;
+  color: var(--sp-muted);
+}
+
+.cs-space .ae-label {
+  font-size: 0.68rem;
+  color: var(--ae-glow);
+}
+
+/* headings and numbers that named Montserrat directly */
+.case-study.cs-space .ft-side__quote,
+.cs-space .is-stat__num,
+.cs-space .is-quote,
+.cs-space .ae-score output,
+.cs-space .ft-steps strong {
+  font-family: var(--sp-sans);
+}
+
+.cs-space .is-stat__num { font-weight: 300; }
+.cs-space .is-quote { font-weight: 400; }
+
+.cs-space a { color: var(--ae-glow); }
+.cs-space a:hover { color: #fff; }
+
+/* ---------- Navigation (as on the home page) ---------- */
+.cs-space #mainNav,
+.cs-space #mainNav.bg-white {
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.cs-space #mainNav.navbar-shrink {
+  background: rgba(3, 3, 5, 0.6) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sp-line);
+}
+
+.cs-space #mainNav .navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
+.cs-space #mainNav .navbar-nav li.nav-item a.nav-link {
+  font-family: var(--sp-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--sp-muted) !important;
+  background: transparent !important;
+}
+
+.cs-space #mainNav .navbar-nav li.nav-item a.nav-link:hover,
+.cs-space #mainNav .navbar-nav li.nav-item a.nav-link:focus-visible {
+  color: #fff !important;
+}
+
+.cs-space #mainNav .navbar-toggler {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid var(--sp-line);
+}
+
+@media (max-width: 991.98px) {
+  .cs-space #mainNav .navbar-collapse.show,
+  .cs-space #mainNav .navbar-collapse.collapsing {
+    background: rgba(3, 3, 5, 0.9);
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
+  }
+}
+
+/* ---------- Sections: no fills, so the sky shows through ---------- */
+.case-study.cs-space .ae-hero {
+  background: radial-gradient(52rem 36rem at 78% 38%, var(--sp-haze), transparent 70%);
+}
+
+.case-study.cs-space .ae-section,
+.case-study.cs-space .ae-section--soft,
+.case-study.cs-space .ae-section--dark,
+.case-study.cs-space .is-section--night {
+  background: transparent;
+  color: var(--sp-muted);
+}
+
+/* a hairline between sections keeps the rhythm without blocks of colour */
+.cs-space main > section + section {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-space .ae-section--dark p,
+.cs-space .is-section--night p {
+  color: var(--sp-muted);
+}
+
+.cs-space .ae-meta {
+  border-top-color: var(--sp-line);
+}
+
+.cs-space .ae-meta dt {
+  font-size: 0.68rem;
+  color: var(--sp-faint);
+}
+
+.cs-space .ae-hero__lede {
+  color: var(--sp-text);
+}
+
+/* ---------- Buttons (outline, mono, like the home page) ---------- */
+.cs-space .ae-btn-light,
+.cs-space .btn-outline-primary {
+  font-family: var(--sp-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 0.9rem 1.4rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.cs-space .ae-btn-light:hover,
+.cs-space .ae-btn-light:focus-visible,
+.cs-space .btn-outline-primary:hover,
+.cs-space .btn-outline-primary:focus-visible {
+  color: #000;
+  background: #fff;
+  border-color: #fff;
+  transform: none;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.cs-space .ae-link-light {
+  font-family: var(--sp-mono);
+  font-size: 0.74rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--sp-muted);
+}
+
+/* ---------- Cards and panels: dark glass ---------- */
+.cs-space .ae-callout,
+.cs-space .ae-decision__heard,
+.cs-space .ae-decision__made,
+.cs-space .is-node,
+.cs-space .is-nudges li,
+.cs-space .ft-steps li,
+.cs-space .ft-principles div,
+.cs-space .ft-changes li,
+.cs-space .ft-side {
+  background: var(--sp-card);
+  border: 1px solid var(--sp-line);
+  box-shadow: none;
+}
+
+.cs-space .ae-callout {
+  border-left: 3px solid var(--ae-glow);
+  color: #fff;
+}
+
+.cs-space .ae-decision__heard {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cs-space .is-node--out {
+  border-left: 3px solid var(--ae-glow);
+}
+
+.cs-space .ae-screen img,
+.cs-space .is-roots,
+.cs-space .is-trend,
+.cs-space .ae-demo,
+.cs-space .is-mirror__stage,
+.cs-space .ae-embed {
+  border: 1px solid var(--sp-line);
+  box-shadow: none;
+}
+
+.cs-space .is-tooltip {
+  background: rgba(14, 14, 22, 0.96);
+  border: 1px solid var(--sp-line);
+  color: #fff;
+}
+
+/* ---------- FairTradeScore ---------- */
+.cs-space .ft-side--retailer { border-top: 3px solid var(--ft-violet); }
+.cs-space .ft-side--supplier { border-top: 3px solid #FDBA74; }
+.cs-space .ft-side--supplier .ae-label { color: #FDBA74; }
+
+.cs-space .ft-steps li.is-next {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.45);
+}
+
+.cs-space .ft-before {
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  color: #F5E1C0;
+}
+
+.cs-space .ft-after {
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  color: #CDEFE8;
+}
+
+.cs-space .ft-before .ae-label { color: #FDBA74; }
+.cs-space .ft-after .ae-label { color: #5EEAD4; }
+
+/* the dashboards are white screens: keep them, frame them for the dark */
+.cs-space .ft-browser,
+.cs-space .ft-board {
+  border: 1px solid var(--sp-line);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+.cs-space .ft-browser::before {
+  background:
+    radial-gradient(circle at 1rem 50%, #3a3f48 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 1.8rem 50%, #3a3f48 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 2.6rem 50%, #3a3f48 0.28rem, transparent 0.3rem),
+    #15161c;
+  border-bottom: 1px solid #23252d;
+}
+
+.cs-space .ft-fig figcaption,
+.cs-space .ae-screen figcaption {
+  color: var(--sp-muted);
+}
+
+/* ---------- Footer ---------- */
+.cs-space .copyright {
+  background: transparent !important;
+  border-top: 1px solid var(--sp-line);
+  color: var(--sp-faint) !important;
+  font-family: var(--sp-mono);
+  letter-spacing: 0.12em;
+}

@@ -1,0 +1,394 @@
+﻿/* ============================================= */
+/* Space home page (index.html)                  */
+/* Dark throughout. Builds on style.css;         */
+/* sp- = space theme. Scene drawn by js/space.js */
+/* ============================================= */
+
+.sp-home {
+  --sp-bg: #030305;
+  --sp-text: #ecedf2;
+  --sp-muted: #9b9eb0;
+  --sp-faint: #6c6f80;
+  --sp-line: rgba(255, 255, 255, 0.12);
+  --sp-glass: rgba(10, 10, 16, 0.55);
+  --sp-sans: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --sp-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  background: var(--sp-bg);
+  color: var(--sp-text);
+  font-family: var(--sp-sans);
+}
+
+/* style.css sets overflow-x: hidden on html/body, which turns body into a scroll
+   container and breaks position: sticky for the journey stage. clip hides
+   sideways overflow the same way without that side effect. */
+html,
+body.sp-home {
+  overflow-x: clip;
+}
+
+.sp-home ::selection {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+}
+
+/* the canvas sits behind everything, fixed to the viewport */
+#sp-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.sp-home > header,
+.sp-home > section,
+.sp-home > .copyright {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Navigation ---------- */
+.sp-home #mainNav {
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+.sp-home #mainNav.navbar-shrink {
+  background: rgba(3, 3, 5, 0.6) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sp-line);
+}
+
+.sp-home #mainNav .navbar-brand img {
+  filter: brightness(0) invert(1); /* white signature on dark */
+}
+
+.sp-home #mainNav .navbar-nav li.nav-item a.nav-link {
+  font-family: var(--sp-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--sp-muted) !important;
+  background: transparent !important;
+}
+
+.sp-home #mainNav .navbar-nav li.nav-item a.nav-link:hover,
+.sp-home #mainNav .navbar-nav li.nav-item a.nav-link:focus-visible,
+.sp-home #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+  color: #fff !important;
+}
+
+.sp-home #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+}
+
+.sp-home #mainNav .navbar-toggler {
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid var(--sp-line);
+}
+
+@media (max-width: 991.98px) {
+  .sp-home #mainNav .navbar-collapse.show,
+  .sp-home #mainNav .navbar-collapse.collapsing {
+    background: rgba(3, 3, 5, 0.9);
+    margin: 0 -0.75rem;
+    padding: 0 0.75rem;
+  }
+}
+
+/* ---------- The journey ---------- */
+/* Its height sets how long the fly-through lasts; js/space.js reads its scroll progress. */
+.sp-journey {
+  height: 320vh;
+}
+
+.sp-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.sp-intro {
+  position: relative;
+  will-change: opacity, transform;
+}
+
+.sp-eyebrow,
+.sp-kicker,
+.sp-role,
+.sp-label,
+.sp-cue span,
+.sp-btn {
+  font-family: var(--sp-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.sp-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: var(--sp-muted);
+}
+
+.sp-home .sp-title {
+  margin: 0;
+  font-family: var(--sp-sans);
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-transform: none;
+}
+
+.sp-role {
+  margin: 1.25rem 0 0;
+  font-size: 0.8rem;
+  color: var(--sp-text);
+}
+
+.sp-lede {
+  max-width: 34rem;
+  margin: 1.75rem 0 2.25rem;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--sp-muted);
+}
+
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.sp-btn:hover,
+.sp-btn:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+/* captions that appear during the fly-through */
+.sp-label {
+  position: absolute;
+  left: 50%;
+  bottom: 12vh;
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 1.8;
+  color: var(--sp-muted);
+  opacity: 0;
+  will-change: opacity;
+}
+
+.sp-label span {
+  display: block;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.sp-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  will-change: opacity;
+}
+
+.sp-cue span {
+  font-size: 0.65rem;
+  color: var(--sp-faint);
+}
+
+.sp-cue i {
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), transparent);
+  animation: sp-cue 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes sp-cue {
+  0% { transform: scaleY(0); opacity: 1; }
+  60% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* ---------- Projects ---------- */
+.sp-home .page-section.portfolio {
+  background: transparent;
+  padding-top: 4rem;
+}
+
+.sp-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--sp-muted);
+}
+
+.sp-home .page-section-heading {
+  font-family: var(--sp-sans);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #fff !important;
+}
+
+.sp-home .projects-section {
+  background: transparent;
+}
+
+.sp-home .project-title {
+  font-family: var(--sp-sans);
+  font-weight: 500;
+  color: #fff;
+}
+
+.sp-home .project-desc {
+  color: var(--sp-muted);
+}
+
+.sp-home .responsive-media {
+  border: 1px solid var(--sp-line);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background: #0b0b10;
+}
+
+.sp-home .project-img:hover .responsive-media {
+  box-shadow: 0 0 40px rgba(170, 190, 255, 0.18);
+}
+
+.sp-home .btn-outline-primary {
+  font-family: var(--sp-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  background: transparent;
+}
+
+.sp-home .btn-outline-primary:hover,
+.sp-home .btn-outline-primary:focus-visible {
+  color: #000;
+  background: #fff;
+  border-color: #fff;
+}
+
+/* ---------- About ---------- */
+.sp-home #about {
+  background: transparent !important;
+  color: var(--sp-text) !important;
+}
+
+.sp-home #about .page-section-heading {
+  color: #fff !important;
+}
+
+.sp-home #about .cs-text {
+  color: var(--sp-muted) !important;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.sp-home #about .btn-dark {
+  font-family: var(--sp-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  color: #fff;
+}
+
+.sp-home #about .btn-dark:hover,
+.sp-home #about .btn-dark:focus-visible {
+  background: #fff;
+  color: #000;
+}
+
+/* ---------- Contact ---------- */
+.sp-home #contact .page-section-heading {
+  color: #fff !important;
+}
+
+.sp-home .click {
+  background: var(--sp-glass);
+  border: 1px solid var(--sp-line);
+  box-shadow: none;
+  color: var(--sp-text);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.sp-home .click:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.sp-home .copyright {
+  background: transparent !important;
+  border-top: 1px solid var(--sp-line);
+  color: var(--sp-faint) !important;
+  font-family: var(--sp-mono);
+  letter-spacing: 0.12em;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 47.99rem) {
+  .sp-journey {
+    height: 260vh;
+  }
+
+  .sp-label {
+    bottom: 16vh;
+  }
+}
+
+/* ---------- Reduced motion: no fly-through, just a calm sky ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .sp-journey {
+    height: auto;
+  }
+
+  .sp-stage {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .sp-label--galaxy,
+  .sp-cue {
+    display: none;
+  }
+
+  .sp-cue i {
+    animation: none;
+  }
+}

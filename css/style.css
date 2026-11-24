@@ -146,6 +146,75 @@ html {
 }
 
 /* ============================= */
+/* Scaled live screens           */
+/* ============================= */
+/* A .dc-frame holds a real screen (an iframe at its design size);
+   js/dc-frame.js scales it to fit the frame's width. */
+.dc-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.dc-frame > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  transform-origin: 0 0;
+  background: transparent;
+}
+
+.dc-frame[hidden] {
+  display: none;
+}
+
+/* FairTradeScore project card: the dashboard behind, the app in front */
+.ftc-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 80% at 30% 60%, rgba(167, 139, 250, 0.35), transparent 70%),
+    linear-gradient(150deg, #1d1830 0%, #0B0D10 70%);
+}
+
+.ftc-cover iframe {
+  pointer-events: none;
+}
+
+.ftc-desk {
+  position: absolute;
+  top: 12%;
+  right: -4%;
+  width: 74%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.ftc-phone {
+  position: absolute;
+  left: 8%;
+  top: 6%;
+  width: 25%;
+  padding: 0.3rem;
+  border-radius: 1.4rem;
+  background: #1b1e24;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55);
+}
+
+.ftc-phone .dc-frame {
+  border-radius: 1.15rem;
+}
+
+.project-img:hover .ftc-cover {
+  transform: scale(1.02);
+}
+
+/* ============================= */
 /* UI/UX Modernization Additions */
 /* ============================= */
 
