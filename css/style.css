@@ -109,6 +109,18 @@ html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Cover videos are decoration: never show the browser's play button over them.
+   If a phone blocks autoplay (e.g. power saving), the poster image shows instead,
+   and js/autoplay.js starts the video as soon as it's allowed. */
+video::-webkit-media-controls,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0 !important;
+}
+
 .project-img:hover .responsive-media {
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
